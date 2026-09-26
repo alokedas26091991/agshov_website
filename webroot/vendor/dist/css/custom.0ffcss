@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet");
+
+body{
+	font-family: 'Ropa Sans', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+#main-wrapper[data-layout=vertical] .topbar .navbar-collapse[data-navbarbg=skin6]{
+	background: #08c;
+}
+.topbar .top-navbar .navbar-nav>.nav-item>.nav-link{
+	color: #fff;	
+    font-size: 16px;
+}
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin4]{
+	background: #08c;
+}
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin4] ul{
+	background: #08c;
+}
+.sidebar-nav ul .sidebar-item .sidebar-link {
+    color: #fff;
+    padding: 12px 15px;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    line-height: 25px;
+    opacity: 1;
+}
+#main-wrapper[data-layout=vertical] .topbar .top-navbar .navbar-header[data-logobg=skin4]{
+	background: #000;
+}
+.bg-primary{
+    background: #08c !important;
+}
+.col-form-label{
+    color:#868686;
+}
+.card .card-title{
+    margin-bottom: 0;
+    float: left;
+}
+.card-subtitle{
+    float: right;
+}

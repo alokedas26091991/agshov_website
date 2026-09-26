@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+namespace App\Model\Table;
+
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Validation\Validator;
+
+/**
+ * Roles Model
+ *
+ * @property \Cake\ORM\Association\HasMany $RoleDashboardElements
+ * @property \Cake\ORM\Association\HasMany $UserRoles
+ *
+ * @method \App\Model\Entity\Role get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Role newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Role[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Role|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Role patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Role[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Role findOrCreate($search, callable $callback = null)
+ */
+class RolesTable extends Table
+{
+
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config): void
+    {
+        parent::initialize($config);
+
+        $this->setTable('roles');
+        $this->setDisplayField('id');
+        $this->setDisplayField('role_name');
+        $this->setPrimaryKey('id');
+
+        $this->hasMany('RoleDashboardElements', [
+            'foreignKey' => 'role_id'
+        ]);
+        $this->hasMany('UserRoles', [
+            'foreignKey' => 'role_id'
+        ]);
+    }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator): Validator
+    {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', 'create');
+
+        $validator
+            ->requirePresence('role_name', 'create')
+            ->notEmpty('role_name');
+
+        
+
+        return $validator;
+    }
+}

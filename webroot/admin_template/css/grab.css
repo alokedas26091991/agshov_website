@@ -1,0 +1,42 @@
+.tables {
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    transition: all 0.2s;
+    transform: scale(0.98);
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .tables.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+   }
+   .tables::after {
+    /*content: "👉 Scroll to see more";*/
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 16px;
+    color: #666;
+    /*background-color: #fff;*/
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.tables::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tables::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.tables::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

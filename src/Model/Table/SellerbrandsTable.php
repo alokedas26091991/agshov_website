@@ -1,0 +1,91 @@
+<?php
+declare(strict_types=1);
+namespace App\Model\Table;
+
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Validation\Validator;
+
+
+class SellerbrandsTable extends Table
+{
+
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config): void
+    {
+        parent::initialize($config);
+
+        $this->setTable('sellerbrands');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
+
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('SubCategories', [
+            'foreignKey' => 'sub_category_id',
+            'joinType' => 'INNER'
+        ]);
+		 $this->belongsTo('Types', [
+            'foreignKey' => 'type_id',
+            'joinType' => 'INNER'
+        ]);
+		$this->belongsTo('Brands', [
+            'foreignKey' => 'brand_id',
+            
+        ]);
+		$this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Products', [
+            'foreignKey' => 'type_id'
+        ]);
+
+    }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator): Validator
+    {
+        $validator
+            ->integer('id')
+            ->allowEmptyString('id', 'create');
+
+
+
+       
+
+
+
+        return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn(['category_id'], 'Categories'));
+        $rules->add($rules->existsIn(['sub_category_id'], 'SubCategories'));
+		$rules->add($rules->existsIn(['type_id'], 'Types'));
+		$rules->add($rules->existsIn(['user_id'], 'Users'));
+		$rules->add($rules->existsIn(['brand_id'], 'Brands'));
+        return $rules;
+    }
+}
