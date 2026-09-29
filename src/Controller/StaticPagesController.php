@@ -58,7 +58,10 @@ public function aboutUs()
 			$this->setMeta($page);
 			$this->set('page', $page);
 			$this->render('about');
-           
+}
+public function career()
+{
+    $this->render('career');
 }
 public function privacyAndPolicy()
 {

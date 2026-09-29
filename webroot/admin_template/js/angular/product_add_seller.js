@@ -517,6 +517,12 @@ $scope.charges=charge;
                if (!item.id || item.id == 0) {
                    item.id = $scope.productId;
                }
+               if (item.user_products && item.user_products.length > 0) {
+                   var up = item.user_products[0];
+                   if (up.offer_price && (!up.actual_price || up.actual_price == 0)) {
+                       up.actual_price = up.offer_price;
+                   }
+               }
            });
        }
        var url = ajxUrl + '/updatePrice/' + $scope.productId;
@@ -525,7 +531,7 @@ $scope.charges=charge;
         'id': $scope.productId
        },{
                  headers: {
-                     'X-CSRF-Token': csrf_token
+                     'X-CSRF-Token': (typeof csrf_token !== 'undefined' ? csrf_token : '')
                  }}).then(function(response) {
         $scope.progressbar.complete();
         $scope.displayMessage("Successfully update product price",true,false);

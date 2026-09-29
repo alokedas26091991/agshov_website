@@ -6,8 +6,8 @@ $active = $this->request->getAttribute('params');
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="navbar-brand-wrapper d-flex justify-content-between align-items-center px-3">
     <a href="/admin/users/dashboard" class="navbar-brand brand-logo d-flex align-items-center gap-2 text-white text-decoration-none">
-      <img src="/assets/img/logo-white.png" alt="Dauji Logo" style="height: 36px; width: auto; object-fit: contain;">
-      <span class="fw-bold fs-5 text-white brand-logo-text" style="letter-spacing: 0.3px; white-space: nowrap;">Dauji Admin</span>
+      <img src="/img/logo.png" alt="Agshov Logo" style="height: 38px; width: auto; object-fit: contain;">
+      <span class="fw-bold fs-5 text-white brand-logo-text" style="letter-spacing: 0.3px; white-space: nowrap;">Agshov Admin</span>
     </a>
     <button class="navbar-toggler align-self-center text-white" type="button" data-toggle="minimize">
       <i class="fa-solid fa-bars"></i>

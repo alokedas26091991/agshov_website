@@ -713,10 +713,18 @@ class ProductsController extends AppController
 				}
 
 				$pUser = $dataUpdate->user_products[0] ?? null;
-				$dataUpdate->actual_price = $pUser->actual_price ?? $p->actual_price ?? 0;
-				$dataUpdate->offer_price = $pUser->offer_price ?? $p->offer_price ?? 0;
-				if (isset($pUser->mrp)) {
-					$dataUpdate->mrp = $pUser->mrp;
+				if ($pUser) {
+					if (isset($pUser->offer_price)) {
+						$dataUpdate->offer_price = $pUser->offer_price;
+					}
+					if (isset($pUser->actual_price) && $pUser->actual_price > 0) {
+						$dataUpdate->actual_price = $pUser->actual_price;
+					} else {
+						$dataUpdate->actual_price = $dataUpdate->offer_price ?? $p->offer_price ?? 0;
+					}
+					if (isset($pUser->mrp)) {
+						$dataUpdate->mrp = $pUser->mrp;
+					}
 				}
 				$dataUpdate->vendor_discount = $pUser->vendor_discount ?? $p->vendor_discount ?? 0;
 				$dataUpdate->total_quantity = $pUser->total_quantity ?? $p->total_quantity ?? 0;

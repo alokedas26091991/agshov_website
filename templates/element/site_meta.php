@@ -11,7 +11,7 @@ if($_display_meta){
 else
 {
 ?>
-<title>Welcome to Daujii</title>
+<title>Welcome to Agshov Pharmaceuticals</title>
 <?php
 }
 ?>
@@ -28,6 +28,6 @@ else
 
 
 <?php }else{
-?><title>Welcome to Daujii</title>
+?><title>Welcome to Agshov Pharmaceuticals</title>
 <?php }
 	?>

@@ -1,224 +1,213 @@
-<div class="page-wrapper">
-
-    <!-- Start Breadscrumb -->
-    <div class="breadcrumb-bar">
-        <div class="container">
-            <div class="breadcrumb-item">
-                <h1 class="breadcrumb-title"><?= h($product->name) ?></h1>
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-items"><a href="/"><i class="icon-house me-2"></i>Home</a></li>
-                        <li class="breadcrumb-items"><span><i class="icon-chevron-right"></i></span></li>
-                        <li class="breadcrumb-items"><a href="/our-products">Our Products</a></li>
-                        <li class="breadcrumb-items"><span><i class="icon-chevron-right"></i></span></li>
-                        <li class="breadcrumb-items active" aria-current="page"><?= h($product->name) ?></li>
-                    </ol>
-                </nav>
+<!-- BREADCRUMB AREA START -->
+<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image" data-bs-bg="/img/banner/main-banner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner">
+                    <h1 class="page-title"><?= h($product->name) ?></h1>
+                    <div class="ltn__breadcrumb-list">
+                        <ul>
+                            <li><a href="/"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                            <li><a href="/our-products">Our Products</a></li>
+                            <li><?= h($product->name) ?></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Breadscrumb -->
+</div>
+<!-- BREADCRUMB AREA END -->
 
-    <!-- ========================
-         Product Details Section
-    ========================= -->
-    <section class="product-details-section" aria-label="Product Details">
-        <div class="container">
-            <div class="row g-5">
-
-                <!-- ── Left: Image Carousel ── -->
-                <div class="col-lg-5 col-md-12">
-                    <div class="pd-carousel-wrap wow fadeInLeft" data-wow-delay="0.1s">
-
-                        <!-- Main image -->
-                        <div class="pd-main-img" id="pdMainImgWrap">
-                            <img src="<?= $this->Url->image(UPLOAD_PRODUCT_IMAGE . $product->photo) ?>" alt="<?= h($product->name) ?>" id="pdMainImg" loading="eager">
-                        </div>
-
-                        <!-- Thumbnail strip -->
-                        <?php 
-                        $allImages = [];
-                        if (!empty($product->photo)) {
-                            $allImages[] = $product->photo;
-                        }
-                        if (!empty($product->product_images)) {
-                            foreach ($product->product_images as $img) {
-                                if ($img->is_active == 1 && !empty($img->image)) {
-                                    $allImages[] = $img->image;
+<!-- SHOP DETAILS AREA START -->
+<div class="ltn__shop-details-area pb-5 pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="ltn__shop-details-inner ltn__page-details-inner">
+                    <div class="row">
+                        <!-- Product Gallery -->
+                        <div class="col-md-6">
+                            <div class="ltn__shop-details-img-gallery">
+                                <?php
+                                $galleryImages = [];
+                                if (!empty($product->photo)) {
+                                    $galleryImages[] = '/upload/product/' . $product->photo;
                                 }
-                            }
-                        }
-                        ?>
-                        <div class="pd-thumbs" id="pdThumbStrip">
-                            <?php foreach ($allImages as $idx => $imgFileName): ?>
-                                <div class="pd-thumb <?= $idx === 0 ? 'is-active' : '' ?>" data-idx="<?= $idx ?>" tabindex="0" role="button" aria-label="View image <?= $idx + 1 ?>">
-                                    <img src="<?= $this->Url->image(UPLOAD_PRODUCT_IMAGE . h($imgFileName)) ?>" alt="<?= h($product->name) ?> thumbnail <?= $idx + 1 ?>">
+                                if (!empty($product->product_images)) {
+                                    foreach ($product->product_images as $gImg) {
+                                        if (!empty($gImg->image)) {
+                                            $url = '/upload/product/' . $gImg->image;
+                                            if (!in_array($url, $galleryImages)) {
+                                                $galleryImages[] = $url;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (empty($galleryImages)) {
+                                    $galleryImages[] = '/img/products/MOFAG Eye Drops.png';
+                                }
+                                ?>
+                                <div class="ltn__shop-details-large-img">
+                                    <?php foreach ($galleryImages as $imgSrc): ?>
+                                        <div class="single-large-img">
+                                            <a href="<?= h($imgSrc) ?>" data-rel="lightcase:myCollection">
+                                                <img src="<?= h($imgSrc) ?>" alt="<?= h($product->name) ?>" class="img-fluid" style="max-height: 400px; object-fit: contain; width: 100%;">
+                                            </a>
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
 
-                        <!-- Prev / Next navigation -->
-                        <?php if (count($allImages) > 1): ?>
-                        <div class="pd-carousel-nav" role="group" aria-label="Image navigation">
-                            <button class="pd-nav-btn" id="pdPrevBtn" aria-label="Previous image">
-                                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-                            </button>
-                            <div class="pd-nav-dots" id="pdDots" aria-hidden="true">
-                                <?php foreach ($allImages as $idx => $imgFileName): ?>
-                                    <span class="pd-nav-dot <?= $idx === 0 ? 'is-active' : '' ?>" data-dot="<?= $idx ?>"></span>
-                                <?php endforeach; ?>
+                                <?php if (count($galleryImages) > 1): ?>
+                                    <div class="ltn__shop-details-small-img ltn__menu-indicator mt-3">
+                                        <?php foreach ($galleryImages as $imgSrc): ?>
+                                            <div class="single-small-img">
+                                                <img src="<?= h($imgSrc) ?>" alt="<?= h($product->name) ?>" style="height: 80px; width: 100%; object-fit: contain; background: #fff; padding: 4px; border: 1px solid #eee; border-radius: 6px; cursor: pointer;">
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                            <button class="pd-nav-btn" id="pdNextBtn" aria-label="Next image">
-                                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-                            </button>
                         </div>
-                        <?php endif; ?>
 
+                        <!-- Product Info -->
+                        <div class="col-md-6">
+                            <div class="modal-product-info shop-details-info">
+                                <h3><?= h($product->name) ?></h3>
+
+
+                                <?php if (!empty($product->tagline)): ?>
+                                    <div class="modal-product-meta ltn__product-details-menu-1 mb-3">
+                                        <ul>
+                                            <li>
+                                                <strong>Composition / Tagline:</strong>
+                                                <span><?= h($product->tagline) ?></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($product->short_description)): ?>
+                                    <div class="product-description mb-4">
+                                        <p><?= h(strip_tags($product->short_description)) ?></p>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div class="ltn__product-details-menu-2">
+                                    <div class="main-buttons d-flex gap-3">
+                                        <a href="#" class="theme-btn-1 btn btn-effect-1 quickEnquiryBtn" data-product-name="<?= h($product->name) ?>">
+                                            <i class="fas fa-envelope me-2"></i> Enquiry Now
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <?php
+                                $currentUrl = $this->Url->build(['controller' => 'Products', 'action' => 'details', $product->slug], ['fullBase' => true]);
+                                $shareTitle = 'Check out ' . $product->name . ' on Agshov Pharmaceuticals';
+                                ?>
+                                <div class="ltn__social-media">
+                                    <ul>
+                                        <li><strong>Share:</strong></li>
+                                        <li>
+                                            <a href="https://api.whatsapp.com/send?text=<?= urlencode($shareTitle . ': ' . $currentUrl) ?>" target="_blank" rel="noopener noreferrer" title="Share on WhatsApp" style="color: #25D366;">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($currentUrl) ?>" target="_blank" rel="noopener noreferrer" title="Share on Facebook" style="color: #1877F2;">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/intent/tweet?text=<?= urlencode($shareTitle) ?>&url=<?= urlencode($currentUrl) ?>" target="_blank" rel="noopener noreferrer" title="Share on Twitter" style="color: #1DA1F2;">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?= urlencode($currentUrl) ?>" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" style="color: #0A66C2;">
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="mailto:?subject=<?= urlencode($product->name . ' - Agshov Pharmaceuticals') ?>&body=<?= urlencode('Check out ' . $product->name . ' at: ' . $currentUrl) ?>" title="Share via Email" style="color: #ea4335;">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <button type="button" id="copyShareLinkBtn" data-url="<?= h($currentUrl) ?>" class="btn btn-sm btn-outline-secondary rounded-circle ms-1 p-0 d-inline-flex align-items-center justify-content-center" title="Copy Product Link" style="width: 30px; height: 30px;">
+                                                <i class="fa-solid fa-link" style="font-size: 13px;"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <span id="copySuccessMsg" class="badge bg-success small ms-2 d-none">Link Copied!</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- ── End Left ── -->
-
-                <!-- ── Right: Product Info ── -->
-                <div class="col-lg-7 col-md-12">
-                    <div class="pd-info wow fadeInRight" data-wow-delay="0.15s">
-
-                        <!-- Brand tag -->
-                        <div class="pd-brand-tag">
-                            <i class="fa-solid fa-star" aria-hidden="true"></i>
-                            Sri Gopinath Food Product
-                        </div>
-
-                        <!-- Product name -->
-                        <h1 class="pd-title"><?= h($product->name) ?></h1>
-
-                        <!-- Short description -->
-                        <?php if (!empty($product->short_description)): ?>
-                        <p class="pd-desc">
-                            <?= h(strip_tags($product->short_description)) ?>
-                        </p>
-                        <?php elseif (!empty($product->description)): ?>
-                        <p class="pd-desc">
-                            <?= h(strip_tags($product->description)) ?>
-                        </p>
-                        <?php endif; ?>
-
-                        <!-- Pack size / variant selector -->
-                        <?php if (!empty($variants) && count($variants) > 1): ?>
-                        <div class="pd-pack-label mb-2 fw-semibold text-dark">Select Pack Size / Variant</div>
-                        <div class="pd-pack-tabs mb-4" id="pdPackTabs" role="group" aria-label="Pack sizes">
-                            <?php foreach ($variants as $idx => $v): 
-                                $up = !empty($v->user_products) ? $v->user_products[0] : null;
-                                $optName = !empty($v->filter_option) ? $v->filter_option->name : (!empty($v->name) ? $v->name : 'Option ' . ($idx + 1));
-                                $retail = $up && !empty($up->actual_price) ? $up->actual_price : $v->actual_price;
-                                $dist = $up && !empty($up->offer_price) ? $up->offer_price : $v->offer_price;
-                                $mrp = $up && !empty($up->mrp) ? $up->mrp : $v->mrp;
-                                $photo = !empty($v->photo) ? UPLOAD_PRODUCT_IMAGE . $v->photo : ($product->photo ? UPLOAD_PRODUCT_IMAGE . $product->photo : '');
-                                $isCurrent = ($v->id == $product->id);
-                            ?>
-                                <button class="pd-pack-tab <?= $isCurrent ? 'is-active' : '' ?>" 
-                                        data-pack="<?= $idx ?>" 
-                                        data-dist="<?= !empty($dist) ? '&#8377;&nbsp;' . number_format((float)$dist, 2) : 'On Request' ?>"
-                                        data-retail="<?= !empty($retail) ? '&#8377;&nbsp;' . number_format((float)$retail, 2) : 'On Request' ?>"
-                                        data-mrp="<?= !empty($mrp) ? '&#8377;&nbsp;' . number_format((float)$mrp, 2) : 'On Request' ?>"
-                                        data-label="<?= h($optName) ?>"
-                                        data-img="<?= !empty($photo) ? $this->Url->image($photo) : '' ?>"
-                                        aria-pressed="<?= $isCurrent ? 'true' : 'false' ?>">
-                                    <?= h($optName) ?>
-                                </button>
-                            <?php endforeach; ?>
-                        </div>
-                        <?php endif; ?>
-
-                        <hr class="pd-divider">
-
-                        <!-- Price grid -->
-                        <?php 
-                        $curUp = !empty($product->user_products) ? $product->user_products[0] : null;
-                        $curDist = $curUp && !empty($curUp->offer_price) ? $curUp->offer_price : $product->offer_price;
-                        $curRetail = $curUp && !empty($curUp->actual_price) ? $curUp->actual_price : $product->actual_price;
-                        $curMrp = $curUp && !empty($curUp->mrp) ? $curUp->mrp : $product->mrp;
-                        ?>
-                        <div class="pd-price-grid" id="pdPriceGrid" aria-live="polite" aria-label="Pricing">
-
-                            <!--<div class="pd-price-card">-->
-                            <!--    <span class="pd-price-label">Distributor Price</span>-->
-                            <!--    <span class="pd-price-value" id="pdDistPrice">&#8377;&nbsp;<?= number_format((float)($curDist ?? 0), 2) ?></span>-->
-                            <!--</div>-->
-
-                            <!--<div class="pd-price-card">-->
-                            <!--    <span class="pd-price-label">Retail Price</span>-->
-                            <!--    <span class="pd-price-value" id="pdRetailPrice">&#8377;&nbsp;<?= number_format((float)($curRetail ?? 0), 2) ?></span>-->
-                            <!--</div>-->
-
-                            <div class="pd-price-card is-mrp">
-                                <span class="pd-price-label">MRP</span>
-                                <span class="pd-price-value" id="pdMrpPrice">&#8377;&nbsp;<?= number_format((float)($curMrp ?? (($curRetail ?? 0) * 1.15)), 2) ?></span>
-                            </div>
-
-                        </div>
-
-                        <hr class="pd-divider">
-
-                        <!-- Key features -->
-                        <div class="pd-features" aria-label="Product features">
-                            <div class="pd-feature-item">
-                                <span class="pd-feature-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-leaf"></i>
-                                </span>
-                                <span>100% Quality Food Ingredients &amp; Authentic Taste</span>
-                            </div>
-                            <div class="pd-feature-item">
-                                <span class="pd-feature-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-certificate"></i>
-                                </span>
-                                <span>FSSAI Certified &amp; quality tested at every batch</span>
-                            </div>
-                            <div class="pd-feature-item">
-                                <span class="pd-feature-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-truck-fast"></i>
-                                </span>
-                                <span>Pan-India distribution — Bulk orders welcome</span>
-                            </div>
-                            <div class="pd-feature-item">
-                                <span class="pd-feature-icon" aria-hidden="true">
-                                    <i class="fa-solid fa-box-open"></i>
-                                </span>
-                                <span>Available for private labelling &amp; custom packaging</span>
-                            </div>
-                        </div>
-
-                        <!-- CTA buttons -->
-                        <div class="pd-cta">
-                            <a href="#" class="pd-btn-primary quickEnquiryBtn" id="quickEnquiryBtn" data-product-name="<?= h($product->name) ?>" aria-haspopup="dialog" aria-controls="quickEnquiryModal">
-                                Quick Enquiry <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-                            </a>
-
-                            <a href="/our-products" class="pd-btn-outline">
-                                <i class="fa-solid fa-grid-2" aria-hidden="true"></i>
-                                View All Products
-                            </a>
-                        </div>
-
-                        <?php if (!empty($product->description)): ?>
-                        <div class="pd-description mt-5">
-                            <h3 class="fs-4 fw-bold mb-3">Product Description</h3>
-                            <div class="text-muted leading-relaxed">
-                                <?= $product->description ?>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-
-                    </div>
-                </div>
-                <!-- ── End Right ── -->
-
             </div>
         </div>
-    </section>
-    <!-- ========================
-         End Product Details Section
-    ========================= -->
-
+    </div>
 </div>
+<!-- SHOP DETAILS AREA END -->
 
-<?= $this->Html->script(['/assets/js/product-details.js'], ['block' => 'scriptBottom']); ?>
+<!-- PRODUCT TAB AREA START -->
+<div class="ltn__product-tab-area pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__product-tab-inner ltn__product-tab-inner-2">
+                    <div class="ltn__tab-menu ltn__tab-menu-2 text-uppercase">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab">
+                                <a class="nav-item nav-link active show" id="nav-tab-1" data-bs-toggle="tab" href="#ltn_tab_details_1">Description</a>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="ltn_tab_details_1">
+                            <div class="ltn__shop-details-tab-content-inner p-4 bg-light rounded">
+                                <h4 class="title-2"><?= h($product->name) ?> Information</h4>
+                                <div>
+                                    <?= !empty($product->description) ? $product->description : h($product->short_description ?: $product->name) ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PRODUCT TAB AREA END -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const copyBtn = document.getElementById('copyShareLinkBtn');
+    const copyMsg = document.getElementById('copySuccessMsg');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+            const url = this.getAttribute('data-url') || window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function () {
+                    if (copyMsg) {
+                        copyMsg.classList.remove('d-none');
+                        setTimeout(() => { copyMsg.classList.add('d-none'); }, 2000);
+                    }
+                });
+            } else {
+                const tempInput = document.createElement('input');
+                tempInput.value = url;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                if (copyMsg) {
+                    copyMsg.classList.remove('d-none');
+                    setTimeout(() => { copyMsg.classList.add('d-none'); }, 2000);
+                }
+            }
+        });
+    }
+});
+</script>

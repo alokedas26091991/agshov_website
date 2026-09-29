@@ -314,27 +314,21 @@
                                         <div ng-repeat="list in skuListData" class="mb-4 p-3 border rounded">
                                             <h4 class="tab-label mb-3">Update Shipping & Price <span> for SKU {{list.supc}}({{list.filter_option.name}})</span></h4>
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Retail Price (INR)</label>
-                                                        <input type="text" required class="form-control" ng-model="list.user_products[0].actual_price" placeholder="Retail Price">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Distributor Price (INR)</label>
-                                                        <input type="text" required class="form-control" ng-model="list.user_products[0].offer_price" placeholder="Distributor Price">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>MRP (INR)</label>
                                                         <input type="text" required class="form-control" ng-model="list.user_products[0].mrp" placeholder="MRP">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Quantity</label>
+                                                        <label>Sale Price (INR)</label>
+                                                        <input type="text" required class="form-control" ng-model="list.user_products[0].offer_price" placeholder="Sale Price">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Quantity / Stock</label>
                                                         <input type="text" required ng-model="list.user_products[0].total_quantity" class="form-control" placeholder="Quantity">
                                                     </div>
                                                 </div>

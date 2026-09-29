@@ -1,582 +1,311 @@
-<?php $this->start('hero_banner'); ?>
-    <!-- Banner section -->
-<!-- Banner Section -->
-<div class="banner-section">
-
-    <!-- Bootstrap Carousel -->
-    <div id="homeBannerCarousel"
-         class="carousel slide carousel-fade"
-         data-bs-ride="carousel"
-         data-bs-interval="5000">
-
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            <button type="button"
-                    data-bs-target="#homeBannerCarousel"
-                    data-bs-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Slide 1"></button>
-
-            <button type="button"
-                    data-bs-target="#homeBannerCarousel"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
+<!-- BANNER CAROUSEL AREA START -->
+<div class="ltn__slider-area">
+    <div id="bannerCarouselIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators banner-carousel-indicators">
+            <button type="button" data-bs-target="#bannerCarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#bannerCarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         </div>
-
-        <!-- Slides -->
         <div class="carousel-inner">
-
-            <!-- Slide 1 -->
             <div class="carousel-item active">
-                <img src="/assets/img/banner/slider-1.png"
-                     class="d-block w-100 banner-slider-img"
-                     alt="Premium Service"
-                     fetchpriority="high">
+                <img src="/img/banner/banner-1.jpg" class="d-block w-100" alt="Banner 1">
             </div>
-
-            <!-- Slide 2 -->
             <div class="carousel-item">
-                <img src="/assets/img/banner/slider-2.png"
-                     class="d-block w-100 banner-slider-img"
-                     alt="Interior Design">
+                <img src="/img/banner/banner-2.jpg" class="d-block w-100" alt="Banner 2">
             </div>
-
         </div>
-
-      <button class="carousel-control-prev custom-carousel-arrow"
-        type="button"
-        data-bs-target="#homeBannerCarousel"
-        data-bs-slide="prev">
-
-    <span class="arrow-circle">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 5L8 12L15 19"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-        </svg>
-    </span>
-
-    <span class="visually-hidden">Previous</span>
-</button>
-
-
-<button class="carousel-control-next custom-carousel-arrow"
-        type="button"
-        data-bs-target="#homeBannerCarousel"
-        data-bs-slide="next">
-
-    <span class="arrow-circle">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 5L16 12L9 19"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-        </svg>
-    </span>
-
-    <span class="visually-hidden">Next</span>
-</button>
-
+        <button class="carousel-control-prev banner-carousel-control" type="button" data-bs-target="#bannerCarouselIndicators" data-bs-slide="prev">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next banner-carousel-control" type="button" data-bs-target="#bannerCarouselIndicators" data-bs-slide="next">
+            <i class="fa-solid fa-arrow-right"></i>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+</div>
+<!-- BANNER CAROUSEL AREA END -->
 
-
-    <!-- Banner Content -->
-    <!-- <div class="banner-overlay-content">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-12 col-lg-12">
-
-                    <div class="banner-content wow fadeInUp"
-                         data-wow-duration="2s"
-                         data-wow-delay="0.2s">
-
-                        <div class="sub-title">
-                            <span class="line"></span>
-                            Sri Gopinath Food Product
-                        </div>
-
-                        <h1 class="title">
-                            Everyday Taste,
-                            <span>
-                                Quality You Can Trust
-
-                                <img src="/assets/img/banner/line-img.png"
-                                     alt="img"
-                                     class="img-fluid line-img">
-                            </span>
-                        </h1>
-
-                        <p class="banner-text">
-                            Explore our range of Rose Water, Kewra Water,
-                            Tomato Sauce, Green Chilli Sauce,
-                            Soya Sauce, Vinegar and Continental Sauce.
-                        </p>
-
-                        <div class="banner-btn">
-                            <a href="/our-products"
-                               class="primary-btn">
-                                Explore Products
-                                <i class="icon-chevron-right"></i>
-                            </a>
-                        </div>
-
+<!-- CATEGORY AREA START -->
+<div class="ltn__category-area section-bg-1-- pt-5 pb-5">
+    <div class="container">
+        <div class="row ltn__category-slider-active-six slick-arrow-1 border-bottom">
+            <div class="col-12">
+                <div class="ltn__category-item ltn__category-item-6 text-center">
+                    <div class="ltn__category-item-img">
+                        <a href="/our-products"><i class="fas fa-eye"></i></a>
                     </div>
-
+                    <div class="ltn__category-item-name">
+                        <h6><a href="/our-products">Eye Care</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ltn__category-item ltn__category-item-6 text-center">
+                    <div class="ltn__category-item-img">
+                        <a href="/our-products"><i class="fas fa-bacteria"></i></a>
+                    </div>
+                    <div class="ltn__category-item-name">
+                        <h6><a href="/our-products">Antibiotics</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ltn__category-item ltn__category-item-6 text-center">
+                    <div class="ltn__category-item-img">
+                        <a href="/our-products"><i class="fas fa-tablets"></i></a>
+                    </div>
+                    <div class="ltn__category-item-name">
+                        <h6><a href="/our-products">Pain Relief</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ltn__category-item ltn__category-item-6 text-center">
+                    <div class="ltn__category-item-img">
+                        <a href="/our-products"><i class="fas fa-stomach"></i></a>
+                    </div>
+                    <div class="ltn__category-item-name">
+                        <h6><a href="/our-products">Gastro Care</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ltn__category-item ltn__category-item-6 text-center">
+                    <div class="ltn__category-item-img">
+                        <a href="/our-products"><i class="fas fa-prescription-bottle"></i></a>
+                    </div>
+                    <div class="ltn__category-item-name">
+                        <h6><a href="/our-products">Cough & Cold</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ltn__category-item ltn__category-item-6 text-center">
+                    <div class="ltn__category-item-img">
+                        <a href="/our-products"><i class="fas fa-allergies"></i></a>
+                    </div>
+                    <div class="ltn__category-item-name">
+                        <h6><a href="/our-products">Anti-Allergic</a></h6>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> -->
-
+    </div>
 </div>
-<!-- End Banner Section -->
-    <a href="#category-section" class="move-next" data-scroll-nav="1" aria-label="scroll"></a>
-<?php $this->end(); ?>
+<!-- CATEGORY AREA END -->
 
-<!-- Start About Section -->
-<section class="aboutus-section-two section">
+<!-- ABOUT US AREA START -->
+<div class="ltn__about-us-area pt-25 pb-120">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="aboutus-img position-relative">
-                    <img src="/assets/img/about-1.png" alt="Sri Gopinath Food Product" class="img-fluid img-one wow fadeInUp" data-wow-duration="1.5s">
-
-                    <img src="/assets/img/about-2.png" alt="Sri Gopinath Food Product" class="img-fluid img-two wow fadeInUp" data-wow-duration="1.5s">
-
-                    <img src="/assets/img/icons/about-element-1.svg" alt="about-img" class="img-fluid element-one">
-
-                    <div class="about-contact d-none d-xl-flex wow bounceIn" data-wow-duration="1.5s">
-                        <div class="about-contact-item">
-                            <i class="icon-phone-call"></i>
-                        </div>
-
-                        <div class="about-contact-list">
-                            <span class="mb-2 d-block">Contact Us</span>
-                            <div class="number">+91 9830934230 / 9883854486</div>
+            <div class="col-lg-6 align-self-center">
+                <div class="about-us-img-wrap about-img-left">
+                    <div class="about-img-structure position-relative">
+                        <div class="structure-shape"></div>
+                        <img src="/img/about-us-image.jpg" alt="About Us Image" class="main-structure-img">
+                        <div class="experience-badge heartbeat-animation">
+                            <div class="badge-inner">
+                                <h3>15+</h3>
+                                <span>Years of<br>Excellence</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="aboutus-content ps-lg-4">
-
-                    <div class="section-header wow fadeInUp" data-wow-duration="1.5s">
-
-                        <span class="badge badge-md bg-primary">
-                            <img src="/assets/img/icons/star-icon.svg" alt="star-icon">
-                            About Us
-                        </span>
-
-                        <h2 class="section-title-one mb-2">
-                            Quality Food Products for Every Kitchen
-                        </h2>
-
-                        <p class="mb-0">
-                            Sri Gopinath Food Product offers a range of everyday food products
-                            including Rose Water, Kewra Water, Tomato Sauce, Green Chilli Sauce,
-                            Soya Sauce, Vinegar and Continental Sauce.
-                        </p>
-
+            <div class="col-lg-6 align-self-center">
+                <div class="about-us-info-wrap">
+                    <div class="section-title-area mb-30">
+                        <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
+                        <h1 class="section-title"><span>Agshov Pharmaceuticals</span> – Your Choicest Pharmaceutical Company</h1>
+                        <p>Agshov Pharmaceuticals is a fast growing pharma company in India that markets world class medicines in the niches of Opthalmology, Oncology, Diabetology, Anti Inflammatory, Anti Bacterial and Injectables among others for doctors, consumers, and healthcare professionals.</p>
                     </div>
 
-                    <div class="aboutus-content-item wow fadeInUp" data-wow-duration="1.5s">
+                    <ul class="ltn__list-item-1 genuine-pharma-list mt-20 mb-40">
+                        <li>
+                            <div class="list-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="list-text">
+                                <strong>Quality Assured:</strong> High-quality, safe, and effective pharmaceutical products.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-icon"><i class="fa-solid fa-microscope"></i></div>
+                            <div class="list-text">
+                                <strong>Diverse Range:</strong> Specialized niches like Oncology, Opthalmology & Diabetology.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <div class="list-text">
+                                <strong>Patient-Centric:</strong> Steadfast commitment to doctors, consumers, and public healthcare.
+                            </div>
+                        </li>
+                    </ul>
 
-                        <div class="aboutus-text">
-                            <h3 class="custom-title d-flex align-items-center gap-2 mb-1">
-                                <img src="/assets/img/icons/star-icon-1.svg" alt="star-icon" class="flex-shrink-0">
-                                Wide Range of Products
-                            </h3>
-
-                            <p class="mb-0">
-                                From flavourful sauces and vinegar to Rose Water and Kewra Water,
-                                our product range is designed to add taste, aroma and convenience
-                                to everyday food preparation.
-                            </p>
-                        </div>
-
-                        <div class="aboutus-text mb-0 pb-0 border-0">
-                            <h3 class="custom-title d-flex align-items-center gap-2">
-                                <img src="/assets/img/icons/star-icon-1.svg" alt="star-icon" class="flex-shrink-0">
-                                Value & Flexible Pricing
-                            </h3>
-
-                            <p class="mb-0">
-                                We offer distributor and retail pricing across our product range.
-                                Rates are negotiable, while payment is required on the same day.
-                            </p>
-                        </div>
-
-                        <a href="/about-us" class="primary-btn btn mt-4">
-                            More About Us <i class="icon-chevron-right"></i>
+                    <div class="about-author-info-2 border-top mt-30 pt-30">
+                        <a href="tel:+919875633787" class="modern-support-btn">
+                            <div class="support-icon-pulse">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div class="support-text">
+                                <small>24/7 Customer Support</small>
+                                <strong>+91 987 563 3787</strong>
+                            </div>
+                            <div class="support-arrow">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
                         </a>
-
                     </div>
-
-                </div>
-            </div>
-        </div>
-
-        <img src="/assets/img/bg/element-img-1.png" alt="element-img" class="img-fluid element-1 wow bounceIn" data-wow-duration="1.5s">
-
-    </div>
-</section>
-<!-- End About Section -->
-
-<!-- Why Choose Us Section -->
-<section class="choose-section section">
-    <div class="container">
-
-        <div class="section-header text-center wow fadeInUp" data-wow-duration="1.5s">
-            <h2 class="d-flex align-items-center justify-content-center section-title-one mb-2 text-white">
-                <span class="text-bar"></span> Why Choose Us <span class="text-bar"></span>
-            </h2>
-            <p class="text-white">
-                A diverse range of food products with flexible pricing and convenient business terms.
-            </p>
-        </div>
-
-        <div class="row g-4">
-
-            <div class="col-lg-3 col-md-6 d-flex wow flipInY" data-wow-duration="2">
-                <div class="choose-item flex-fill">
-                    <div class="choose-content text-center">
-                        <img src="/assets/img/icons/choose-01.svg" alt="Icon">
-                        <h3 class="mb-2 text-white">Wide Product Range</h3>
-                        <p class="text-white">
-                            Sauces, flavoured waters, vinegar and more.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex wow flipInY" data-wow-duration="2">
-                <div class="choose-item flex-fill">
-                    <div class="choose-content text-center">
-                        <img src="/assets/img/icons/choose-02.svg" alt="Icon">
-                        <h3 class="mb-2 text-white">Multiple Pack Sizes</h3>
-                        <p class="text-white">
-                            Selected products are available in different sizes.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex wow flipInY" data-wow-duration="2">
-                <div class="choose-item flex-fill">
-                    <div class="choose-content text-center">
-                        <img src="/assets/img/icons/choose-03.svg" alt="Icon">
-                        <h3 class="mb-2 text-white">Negotiable Rates</h3>
-                        <p class="text-white">
-                            Rates are negotiable based on business requirements.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex wow flipInY" data-wow-duration="2">
-                <div class="choose-item flex-fill">
-                    <div class="choose-content text-center">
-                        <img src="/assets/img/icons/choose-04.svg" alt="Icon">
-                        <h3 class="mb-2 text-white">Same Day Payment</h3>
-                        <p class="text-white">
-                            Convenient payment terms with same-day payment.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <img src="/assets/img/choose-bg-01.png" alt="bg" class="img-fluid choose-bg-01">
-    <img src="/assets/img/choose-bg-02.png" alt="bg" class="img-fluid choose-bg-02">
-</section>
-<!-- End Choose Us Section -->
-
-<!-- Start Collections Section -->
-<section class="collection-section section">
-    <div class="container">
-
-        <div class="section-header text-center wow fadeInUp" data-wow-duration="1.5s">
-            <span class="badge badge-md bg-primary">
-                <img src="/assets/img/icons/star-icon.svg" alt="star-icon">
-                Our Products
-            </span>
-
-            <h2 class="section-title-one mb-0">
-                Our Complete Product Range
-            </h2>
-
-            <p class="mt-2">
-                Explore our products, available in different pack sizes with
-                distributor price, retail price and MRP.
-            </p>
-        </div>
-
-    </div>
-
-    <div class="collection-list collection-slider swiper">
-        <div class="swiper-wrapper">
-
-            <?php
-            $cardIndex = 0;
-            if (!empty($dbProducts)) {
-                foreach ($dbProducts as $p) {
-                    $imgUrl = '/assets/img/products/rose-water.png';
-                    if (!empty($p->photo)) {
-                        $imgUrl = '/upload/product/' . $p->photo;
-                    }
-                    $productUrl = '/product/' . h($p->slug);
-
-                    // Combine parent product and child products as all variants for this product
-                    $allVariants = [];
-                    if (!empty($p->offer_price) || !empty($p->actual_price) || !empty($p->filter_option) || empty($p->child_products)) {
-                        $allVariants[] = $p;
-                    }
-                    if (!empty($p->child_products)) {
-                        foreach ($p->child_products as $c) {
-                            $allVariants[] = $c;
-                        }
-                    }
-
-                    foreach ($allVariants as $v) {
-                        $cardIndex++;
-                        $duration = 1.5 + (($cardIndex % 8) * 0.5);
-                        $variantImg = $imgUrl;
-                        if (!empty($v->photo)) {
-                            $variantImg = '/upload/product/' . $v->photo;
-                        }
-                        $distPrice = !empty($v->offer_price) ? number_format((float)$v->offer_price, 2) : (!empty($p->offer_price) ? number_format((float)$p->offer_price, 2) : 'N/A');
-                        $retPrice = !empty($v->actual_price) ? number_format((float)$v->actual_price, 2) : (!empty($p->actual_price) ? number_format((float)$p->actual_price, 2) : 'N/A');
-                        $mrpPrice = !empty($v->mrp) ? number_format((float)$v->mrp, 2) : (!empty($v->price) ? number_format((float)$v->price, 2) : (!empty($p->price) ? number_format((float)$p->price, 2) : 'N/A'));
-                        
-                        $fo = $v->filter_option ?? null;
-                        $packSize = ($fo && !empty($fo->name)) ? $fo->name : (!empty($v->size_id) ? $v->size_id : (!empty($v->name) && $v->name !== $p->name ? $v->name : 'Standard'));
-                        ?>
-                        <div class="collection-card wow flipInY swiper-slide" data-wow-duration="<?= $duration ?>s">
-                            <div class="collection-img">
-                                <img src="<?= h($variantImg) ?>" alt="<?= h($p->name) ?>" class="img-fluid" style="max-height: 220px; object-fit: contain;">
-                            </div>
-
-                            <div class="collection-detail">
-                                <h3 class="custom-title mb-2">
-                                    <a href="<?= $productUrl ?>"><?= h($p->name) ?></a>
-                                </h3>
-
-                                <p class="mb-2">Pack Size: <strong><?= h($packSize) ?></strong></p>
-
-                                <div class="price">
-                                    Distributor Price: &#8377;<?= $distPrice ?><br>
-                                    Retail Price: &#8377;<?= $retPrice ?><br>
-                                    MRP: &#8377;<?= $mrpPrice ?>
-                                </div>
-
-                                <a href="<?= $productUrl ?>" class="primary-btn btn mt-3">
-                                    View Product <i class="icon-chevron-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                }
-            } else {
-                ?>
-                <div class="col-12 text-center py-4">
-                    <p class="text-muted">No products available at the moment.</p>
-                </div>
-                <?php
-            }
-            ?>
-
-        </div>
-    </div>
-</section>
-<!-- End Collections Section -->
-
-<!-- Start Delicious -->
-<div class="delicious-info mt-5 mb-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- <div class="col-lg-6">
-                <div class="delicious-img wow fadeInUp">
-                    <img src="/assets/img/about-1.png" class="img-fluid delicious-main-img rounded-circle" alt="Food">
-
-                    <div class="offer-item">
-                        <h2 class="mb-1 text-white">20+</h2>
-                        <p class="text-white">Years of Experience</p>
-                    </div>
-                </div>
-            </div> -->
-            <div class="col-lg-12">
-                <div class="section-header wow fadeInUp mb-4">
-                    <h2 class="section-title-one mb-2">We serve fresh, flavorful food crafted with care,
-                        passion, and quality ingredients.</h2>
-                    <p>Driven by a love for good food and great service, our restaurant offers a menu designed
-                        to delight every palate.</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 d-flex wow fadeInUp">
-                        <div class="delicious-item bg-primary-light flex-fill">
-                            <h3 class="mb-2">Our Mission</h3>
-                            <p>To deliver delicious food and exceptional service in a warm, inviting space.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-flex wow fadeInUp">
-                        <div class="delicious-item bg-secondary-light flex-fill">
-                            <h3 class="mb-2">Our Vision</h3>
-                            <p>To become a favorite dining destination known for quality and consistency.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="wow fadeInUp">
-                    <a href="/about-us" class="btn-primary gap-2">Read More
-                        <i class="icon-chevron-right"></i>
-                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- End Delicious -->
+<!-- ABOUT US AREA END -->
 
-<!-- Marquee Section -->
-<section class="marquee-section">
-    <div class="horizontal-slide d-flex" data-direction="left" data-speed="slow">
-        <div class="slide-list d-flex">
-            <div class="marquee-item">
-                <h2 class="marquee-title">Exceptional Quality</h2>
-            </div>
-            <div class="marquee-item">
-                <h2 class="marquee-title">Expert Chefs & Staff</h2>
-            </div>
-            <div class="marquee-item">
-                <h2 class="marquee-title">Trusted by Customers</h2>
-            </div>
-            <div class="marquee-item">
-                <h2 class="marquee-title">Best Value for Money</h2>
-            </div>
-            <div class="marquee-item">
-                <h2 class="marquee-title">Exceptional Quality</h2>
-            </div>
-            <div class="marquee-item">
-                <h2 class="marquee-title">Expert Chefs & Staff</h2>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Marquee Section -->
-
-<!-- Start Testimonial Section -->
-<section class="testimonial-section section">
+<!-- BANNER AREA START -->
+<div class="ltn__banner-area">
     <div class="container">
-        <div class="section-header text-center wow fadeInUp">
-            <h2 class="d-flex align-items-center justify-content-center section-title-one mb-2">
-                <span class="text-bar"></span> Testimonials From Customers <span class="text-bar"></span>
-            </h2>
-            <p>Genuine feedback from our valued customers who chose us with trust.</p>
-        </div>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex wow fadeInUp">
-                <div class="testimonial-item flex-fill text-center">
-                    <div class="quatation-icon">
-                        <img src="/assets/img/quatation-icon.svg" alt="quote" class="img-fluid">
-                    </div>
-                    <div class="review-star justify-content-center mb-2">
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="description">They went above and beyond to meet my expectations. I finally
-                            found a company I can depend on.</p>
-
-                        <p class="author-name"><a href="#">Peter Marshall</a></p>
-                        <p class="location">France</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-sm-6">
+                <div class="ltn__banner-item">
+                    <div class="ltn__banner-img">
+                        <a href="/our-products"><img src="/img/banner-new-1.jpg" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 d-flex wow fadeInUp">
-                <div class="testimonial-item flex-fill text-center">
-                    <div class="quatation-icon">
-                        <img src="/assets/img/quatation-icon.svg" alt="quote" class="img-fluid">
-                    </div>
-                    <div class="review-star justify-content-center mb-2">
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="description">Absolutely loved the vegan lasagna recipe! It was easy to follow,
-                            packed with flavor, and my whole family.</p>
-
-                        <p class="author-name"><a href="#">Emily Johnson</a></p>
-                        <p class="location">USA</p>
+            <div class="col-lg-4 col-sm-6">
+                <div class="ltn__banner-item">
+                    <div class="ltn__banner-img">
+                        <a href="/our-products"><img src="/img/banner-new-2.jpg" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 d-flex wow fadeInUp">
-                <div class="testimonial-item flex-fill text-center">
-                    <div class="quatation-icon">
-                        <img src="/assets/img/quatation-icon.svg" alt="quote" class="img-fluid">
-                    </div>
-                    <div class="review-star justify-content-center mb-2">
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                        <i class="fa-solid fa-star text-warning"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="description">The dessert ideas here are amazing! I tried the chocolate mousse,
-                            and it turned out perfect.</p>
-
-                        <p class="author-name"><a href="#">Benjamin Taylor</a></p>
-                        <p class="location">Russia</p>
+            <div class="col-lg-4 col-sm-6">
+                <div class="ltn__banner-item">
+                    <div class="ltn__banner-img">
+                        <a href="/our-products"><img src="/img/banner-new-1.jpg" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- BANNER AREA END -->
 
-</section>
-<!-- End Testimonial Section -->
+<!-- PRODUCT AREA START -->
+<div class="ltn__product-area ltn__product-gutter no-product-ratting pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title-area ltn__section-title-2 text-center">
+                    <h1 class="section-title">Our Products</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="ltn__banner-item">
+                            <div class="ltn__banner-img">
+                                <a href="/our-products"><img src="/img/banner-new-4.jpg" alt="Banner Image"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="ltn__banner-item">
+                            <div class="ltn__banner-img">
+                                <a href="/our-products"><img src="/img/banner-new-5.jpg" alt="Banner Image"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row g-4">
+                    <?php if (!empty($dbProducts)): ?>
+                        <?php foreach (array_slice($dbProducts, 0, 8) as $product): ?>
+                            <?php
+                            $imgUrl = '/img/products/AGCET M TAB.png';
+                            if (!empty($product->photo)) {
+                                $imgUrl = '/upload/product/' . $product->photo;
+                            } elseif (!empty($product->product_images) && isset($product->product_images[0]->image)) {
+                                $imgUrl = '/upload/product/' . $product->product_images[0]->image;
+                            }
+                            ?>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                                <div class="ltn__product-item ltn__product-item-2 text-left h-100">
+                                    <div class="product-img text-center">
+                                        <a href="/product/<?= h($product->slug) ?>"><img src="<?= h($imgUrl) ?>" alt="<?= h($product->name) ?>" style="max-height: 180px; object-fit: contain;"></a>
+                                        <?php if (!empty($product->tagline)): ?>
+                                            <div class="product-badge">
+                                                <ul>
+                                                    <li class="sale-badge ingredients-badge"><?= h($product->tagline) ?></li>
+                                                </ul>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="product-info">
+                                        <h2 class="product-title"><a href="/product/<?= h($product->slug) ?>"><?= h($product->name) ?></a></h2>
+                                        <div class="product-description">
+                                            <p><?= h($product->short_description ?: $product->name) ?></p>
+                                        </div>
+                                        <div class="product-action-btn mt-20">
+                                            <a href="/product/<?= h($product->slug) ?>" class="theme-btn-1 btn btn-effect-1 text-uppercase w-100">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                <div class="text-center mt-30">
+                    <a href="/our-products" class="theme-btn-1 btn btn-effect-1">View All Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PRODUCT AREA END -->
 
-<!-- Start Partners Section -->
-<!--<section class="partner-section section">-->
-<!--    <div class="container">-->
-<!--        <div class="section-header">-->
-<!--            <h2 class="section-title-one mb-0">Our Partners</h2>-->
-<!--        </div>-->
-<!--        <div class="partner-slider">-->
-<!--            <div class="partner-item">-->
-<!--                <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">-->
-<!--            </div>-->
-<!--            <div class="partner-item">-->
-<!--                <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">-->
-<!--            </div>-->
-<!--            <div class="partner-item">-->
-<!--                <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">-->
-<!--            </div>-->
-<!--            <div class="partner-item">-->
-<!--                <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">-->
-<!--            </div>-->
-<!--            <div class="partner-item">-->
-<!--                <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">-->
-<!--            </div>-->
-<!--            <div class="partner-item">-->
-<!--                <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-<!-- End Partners Section -->
+<!-- PHARMA HIGHLIGHTS STRIP START -->
+<div class="pharma-highlights-strip section-bg-1 pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="pharmaHighlightCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="pharma-highlight-card text-center">
+                                <div class="pharma-highlight-icon mb-2">
+                                    <i class="fa-solid fa-industry fs-2 text-danger"></i>
+                                </div>
+                                <h4>GMP Certified</h4>
+                                <p>All products manufactured under strict WHO-GMP guidelines</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="pharma-highlight-card text-center">
+                                <div class="pharma-highlight-icon mb-2">
+                                    <i class="fa-solid fa-flask fs-2 text-danger"></i>
+                                </div>
+                                <h4>Advanced R&amp;D</h4>
+                                <p>Continuously investing in next-gen pharmaceutical formulations</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="pharma-highlight-card text-center">
+                                <div class="pharma-highlight-icon mb-2">
+                                    <i class="fa-solid fa-file-medical fs-2 text-danger"></i>
+                                </div>
+                                <h4>Regulatory Compliant</h4>
+                                <p>Fully DCGI &amp; FDA approved formulations and processes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PHARMA HIGHLIGHTS STRIP END -->

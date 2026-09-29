@@ -1,229 +1,121 @@
-<div class="page-wrapper">
-
-    <!-- Start Breadcrumb -->
-    <div class="breadcrumb-bar">
-        <div class="container">
-            <div class="breadcrumb-item">
-                <h1 class="breadcrumb-title">Contact Us</h1>
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-items"><a href="/"><i class="icon-house me-2"></i>Home</a></li>
-                        <li class="breadcrumb-items"><span><i class="icon-chevron-right"></i></span></li>
-                        <li class="breadcrumb-items active" aria-current="page">Contact Us</li>
-                    </ol>
-                </nav>
+<!-- BREADCRUMB AREA START -->
+<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image" data-bs-bg="/img/banner/main-banner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner">
+                    <h1 class="page-title">Contact Us</h1>
+                    <div class="ltn__breadcrumb-list">
+                        <ul>
+                            <li><a href="/"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Breadcrumb -->
-
-    <!-- Contact Us Section -->
-    <section class="contact-section section">
-        <div class="container">
-
-            <!-- Start Row -->
-            <div class="row g-4 align-items-center">
-
-                <!-- Contact Information -->
-                <div class="col-lg-6 col-md-12">
-
-                    <div class="section-heeader mb-4 pb-4 border-bottom">
-                        <h2 class="mb-2 fs-32 fw-bold">
-                            We'd love to hear from you!
-                        </h2>
-
-                        <p class="mb-0">
-                            Have an enquiry about our products, pricing or pack sizes?
-                            Get in touch with Sri Gopinath Food Product and our team
-                            will be happy to assist you.
-                        </p>
-                    </div>
-
-                    <div class="contact-details">
-
-                        <!-- Office Address -->
-                        <div class="contact-item box-shadow">
-
-                            <div class="bg-dark avatar avatar-lg rounded-pill fs-20">
-                                <i class="icon-map-pinned"></i>
-                            </div>
-
-                            <div>
-                                <h3>Office Address</h3>
-
-                                <p>
-                                    D-10, Jagannath Ghat Road,
-                                    Kolkata - 700007
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <!-- Contact Information -->
-                        <div class="contact-item box-shadow">
-
-                            <div class="bg-dark avatar avatar-lg rounded-pill fs-20">
-                                <i class="icon-headset"></i>
-                            </div>
-
-                            <div>
-                                <h3>Contact Information</h3>
-
-                                <p>
-                                    Phone :
-                                    <a href="tel:+919830934230">
-                                        +91 9830934230
-                                    </a>
-                                </p>
-
-                          
-                            </div>
-
-                        </div>
-                        <!-- Contact Information -->
-                        <div class="contact-item box-shadow">
-
-                            <div class="bg-dark avatar avatar-lg rounded-pill fs-20">
-                                <i class="icon-headset"></i>
-                            </div>
-
-                            <div>
-                                <h3>Email Us</h3>
-
-                                <p>
-                                    Mail us :
-                                    <a href="mailto:
-                                       daujii@srigopinathfoodproduct.com
-                                    ">
-                                       daujii@srigopinathfoodproduct.com
-                                    </a>
-                                </p>
-
-                          
-                            </div>
-
-                        </div>
-
-
-                        <!-- Factory Address -->
-                        <div class="contact-item box-shadow">
-
-                            <div class="bg-dark avatar avatar-lg rounded-pill fs-20">
-                                <i class="icon-briefcase-business"></i>
-                            </div>
-
-                            <div>
-                                <h3>Factory Address</h3>
-
-                                <p>
-                                    Sabji Bagan, Kamarhati,
-                                    Kolkata - 700109
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- End Contact Information -->
-
-
-                <!-- Contact Form -->
-                <div class="col-lg-6 col-md-12">
-
-                    <div class="contact-form custom-form card bg-light">
-
-                        <div class="card-header bg-light mb-3">
-
-                            <h3 class="mb-2 fs-32">
-                                Send Us Message
-                            </h3>
-
-                            <p class="mb-0">
-                                Have a product enquiry or want to know more about
-                                our products and pricing? Send us a message.
-                            </p>
-
-                        </div>
-
-                        <div class="card-body p-0">
-
-                            <form action="/contact-us" method="post">
-                                <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
-
-                                <!-- Start Row -->
-                                <div class="row g-4 mb-4">
-
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="name" class="visually-hidden">Your Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required autocomplete="name">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="mobile" class="visually-hidden">Phone / Mobile</label>
-                                            <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your phone number" required autocomplete="tel">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="email" class="visually-hidden">Email Address</label>
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required autocomplete="email">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="message" class="visually-hidden">Message</label>
-                                            <textarea class="form-control" rows="4" id="message" name="message" placeholder="Enter your message" required></textarea>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- End Row -->
-
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <button type="submit" name="sub" class="primary-btn btn w-100">
-                                        Send Message <i class="icon-chevron-right"></i>
-                                    </button>
-                                </div>
-
-                            </form>
-
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Contact Form -->
-
-            </div>
-            <!-- End Row -->
-
-            <!-- Location Map -->
-            <div class="row mt-4">
-
-                <div class="col-lg-12">
-
-                    <div class="location-map">
-
-                        <iframe title="Sri Gopinath Food Product Office Location"
-                            src="https://www.google.com/maps?q=D-10,+Jagannath+Ghat+Road,+Kolkata+700007&output=embed"
-                            height="350" style="border:0; width:100%;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Contact Us Section -->
 </div>
+<!-- BREADCRUMB AREA END -->
+
+<!-- CONTACT INFO AREA START -->
+<div class="agshov-contact-info-area pt-5 pb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Address -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="agshov-contact-info-card">
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-location-dot mt-1"></i>
+                    </div>
+                    <h3>Office Address</h3>
+                    <p>AGSHOV PHARMACEUTICALS PVT LTD,<br> BHAWANI ALLEN ENCLAVE, BLOCK -A,<br> KRISHNAPUR, MONDAL PARA<br> KOLKATA -700102</p>
+                </div>
+            </div>
+            <!-- Phone -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="agshov-contact-info-card">
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-phone-volume mt-1"></i>
+                    </div>
+                    <h3>Connect With Us</h3>
+                    <p><strong>Sales Enquiry:</strong> <a href="tel:9875633787">9875633787</a></p>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="agshov-contact-info-card">
+                    <div class="contact-info-icon">
+                        <i class="fa-solid fa-envelope-open-text mt-1"></i>
+                    </div>
+                    <h3>Mail Us</h3>
+                    <p>
+                        <strong>Connect With Us:</strong> <a href="mailto:enquiry@agshovpharma.com">enquiry@agshovpharma.com</a><br>
+                        <strong>Business Enquiry:</strong> <a href="mailto:sales@agshovpharma.com">sales@agshovpharma.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CONTACT INFO AREA END -->
+
+<!-- CONTACT MESSAGE & MAP AREA START -->
+<div class="agshov-contact-message-area pb-5">
+    <div class="container">
+        <div class="row agshov-contact-wrapper g-0 align-items-stretch">
+            <!-- Contact Form -->
+            <div class="col-lg-6">
+                <div class="agshov-contact-form-box">
+                    <div class="section-title-area">
+                        <h6 class="section-subtitle ltn__secondary-color">// Drop a Message</h6>
+                        <h2 class="section-title">Get In Touch For Any<br>Enquiry or Partnership</h2>
+                    </div>
+                    <form id="contact-form" action="/home/enquiry" method="post" class="agshov-form">
+                        <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-item with-icon">
+                                    <span class="input-icon"><i class="fa-solid fa-user mt-1"></i></span>
+                                    <input type="text" name="name" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-item with-icon">
+                                    <span class="input-icon"><i class="fa-solid fa-envelope mt-1"></i></span>
+                                    <input type="email" name="email" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-item with-icon">
+                                    <span class="input-icon"><i class="fa-solid fa-phone mt-1"></i></span>
+                                    <input type="text" name="phone" placeholder="Phone Number" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-item with-icon">
+                                    <span class="input-icon"><i class="fa-solid fa-layer-group mt-1"></i></span>
+                                    <input type="text" name="subject" placeholder="Subject">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-item textarea-item with-icon">
+                            <span class="input-icon textarea-icon"><i class="fa-solid fa-pen mt-1"></i></span>
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="btn-wrapper mt-0">
+                            <button class="theme-btn-1 btn btn-effect-1 text-uppercase w-100" type="submit">Submit Request <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Google Map -->
+            <div class="col-lg-6">
+                <div class="agshov-contact-map-box h-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14736.331291113038!2d88.42398405000001!3d22.600645600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275c6bf2bd8ef%3A0xeab50d99042b4b44!2sBhawani%20Allen%20Enclave!5e0!3m2!1sen!2sin!4v1713702123456!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CONTACT MESSAGE & MAP AREA END -->

@@ -1,601 +1,160 @@
-<div class="page-wrapper">
-
-    <!-- Start Breadcrumb -->
-    <div class="breadcrumb-bar">
-        <div class="container">
-            <div class="breadcrumb-item">
-                <h1 class="breadcrumb-title"><?= isset($page->page_name) ? h($page->page_name) : 'About Us' ?></h1>
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-items"><a href="/"><i class="icon-house me-2"></i>Home</a></li>
-                        <li class="breadcrumb-items"><span><i class="icon-chevron-right"></i></span></li>
-                        <li class="breadcrumb-items active" aria-current="page"><?= isset($page->page_name) ? h($page->page_name) : 'About Us' ?></li>
-                    </ol>
-                </nav>
+<!-- BREADCRUMB AREA START -->
+<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image" data-bs-bg="/img/banner/main-banner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner">
+                    <h1 class="page-title">About Us</h1>
+                    <div class="ltn__breadcrumb-list">
+                        <ul>
+                            <li><a href="/"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                            <li>About Us</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Breadcrumb -->
+</div>
+<!-- BREADCRUMB AREA END -->
 
-    <!-- Start About Us -->
-    <section class="aboutus-section-two section">
-        <div class="container">
-            <div class="row about-hero-row">
-
-                <div class="col-lg-6">
-                    <div class="aboutus-img-two d-none d-lg-block">
-                        <img src="/assets/img/about-2.png" alt="Sri Gopinath Food Product" class="img-fluid">
+<!-- ABOUT AGSHOV AREA START -->
+<section class="agshov-about-section">
+    <!-- Hero Split Block -->
+    <div class="container">
+        <div class="row align-items-center agshov-about-row">
+            <!-- Image Side -->
+            <div class="col-lg-5 col-md-12 mb-5 mb-lg-0">
+                <div class="agshov-about-img-wrap">
+                    <img src="/img/about-us-image-2.jpg" alt="Agshov Pharmaceuticals" class="agshov-about-img">
+                    <div class="agshov-about-badge">
+                        <span class="badge-number">15<sup>+</sup></span>
+                        <span class="badge-label">Years of<br>Excellence</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-6">
+            <!-- Content Side -->
+            <div class="col-lg-7 col-md-12">
+                <div class="agshov-about-content">
+                    <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Agshov</h6>
+                    <h1 class="section-title">The Expanding <span>Pharma Industry in</span> India</h1>
 
-                    <div class="section-header">
-                        <h2 class="section-title-one mb-2">
-                            Quality Food Products for Every Need
-                        </h2>
+                    <p class="agshov-about-lead">Agshov Pharmaceuticals is a fast growing pharma company in India that markets world class medicines in the niches of <strong>Ophthalmology, Oncology, Diabetology, Anti Inflammatory, Anti Bacterial</strong> and Injectables among others for doctors, consumers, and healthcare professionals.</p>
 
-                        <p>
-                            Sri Gopinath Food Product offers a diverse range of food
-                            products including Rose Water, Kewra Water, Tomato Sauce,
-                            Green Chilli Sauce, Soya Sauce, Vinegar and Continental Sauce.
-                        </p>
+                    <p class="agshov-about-para">The business of Agshov is underpinned on developing and distributing quality medicines for therapeutic use. It was founded with a vision to emerge as a leading research based pharmaceutical company in India with a global outreach. Our generic medicines in the above mentioned segments have a significant presence in the market and are known for their potency, competitive pricing, and quality.</p>
+
+                    <!-- Inline Stats -->
+                    <div class="agshov-inline-stats">
+                        <div class="agshov-stat-item">
+                            <span class="stat-number">2,800<sup>+</sup></span>
+                            <span class="stat-label">Formulations</span>
+                        </div>
+                        <div class="agshov-stat-divider"></div>
+                        <div class="agshov-stat-item">
+                            <span class="stat-number">2M<sup>+</sup></span>
+                            <span class="stat-label">Prescriptions</span>
+                        </div>
+                        <div class="agshov-stat-divider"></div>
+                        <div class="agshov-stat-item">
+                            <span class="stat-number">500<sup>+</sup></span>
+                            <span class="stat-label">Distribution Points</span>
+                        </div>
                     </div>
 
-                    <div class="aboutus-content">
-
-                        <div class="about-item border-0 p-0">
-                            <h3 class="custom-title mb-2">
-                                <i class="icon-circle-check-big text-primary fs-20"></i>
-                                Wide Product Range
-                            </h3>
-
-                            <p>
-                                Our product range includes flavoured waters, sauces and
-                                vinegar, with selected products available in multiple
-                                pack sizes such as 100ml, 200ml and 650ml.
-                            </p>
-                        </div>
-
-                        <div class="about-item border-0 p-0">
-                            <h3 class="custom-title mb-2">
-                                <i class="icon-circle-check-big text-primary fs-20"></i>
-                                Flexible Pricing
-                            </h3>
-
-                            <p>
-                                Our rate chart includes distributor prices, retail prices
-                                and MRP for the available product variants. Rates are
-                                negotiable depending on requirements and market conditions.
-                            </p>
-                        </div>
-
-                        <div class="about-item border-0 p-0">
-                            <h3 class="custom-title mb-2">
-                                <i class="icon-circle-check-big text-primary fs-20"></i>
-                                Convenient Business Terms
-                            </h3>
-
-                            <p>
-                                We provide clear pricing across our product range, with
-                                same-day payment as the stated payment condition.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <a href="/our-products" class="primary-btn about-cta-btn">
-                        <i class="icon-hand-platter"></i>
-                        Explore Our Products
-                    </a>
-
+                    <a href="/contact-us" class="theme-btn-1 btn btn-effect-1 mt-20 text-uppercase">Get In Touch <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
-
             </div>
         </div>
-    </section>
-    <!-- End About Us -->
+    </div>
 
-    <!-- Work Section -->
-    <section class="work-section section">
+    <!-- Gradient Banner -->
+    <div class="agshov-ethics-banner">
         <div class="container">
-
-            <div class="section-header about-center-header">
-                <span class="badge badge-md bg-primary mb-1">Our Process</span>
-
-                <h2 class="section-title-one mb-0">
-                    Simple & Convenient
-                </h2>
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="ethics-title">Built on Integrity, Trust, Knowledge & Care</h2>
+                    <p class="ethics-text">Agshov Pharmaceuticals takes pride in its work ethics that rest on fundamentals like integrity, trust, knowledge, and care. We maintain high ethical standards while operating and are committed to set a high benchmark for business conduct in the market.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end text-center mt-4 mt-lg-0">
+                    <div class="ethics-icon-wrap">
+                        <i class="fa-solid fa-award ethics-main-icon"></i>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
 
+    <!-- MISSION & VISION AREA START -->
+    <section class="agshov-mission-vision-section">
+        <div class="container">
             <div class="row g-4">
-
-                <!-- Step 1 -->
-                <div class="col-md-4">
-                    <div class="work-item wow bounceIn" data-wow-duration="1.0s">
-
-                        <div class="work-icon">
-                            <span>
-                                <i class="fa-solid fa-basket-shopping"></i>
-                            </span>
+                <!-- Vision Card -->
+                <div class="col-lg-6">
+                    <div class="mv-card">
+                        <div class="mv-icon-box">
+                            <i class="fa-solid fa-eye mt-1"></i>
                         </div>
-
-                        <h3 class="custom-title mb-2">
-                            Choose Your Products
-                        </h3>
-
-                        <p class="mb-0">
-                            Explore our range of Rose Water, Kewra Water, Tomato Sauce,
-                            Green Chilli Sauce, Soya Sauce, Vinegar and Continental Sauce.
-                        </p>
-
+                        <i class="fa-solid fa-eye mv-watermark-icon"></i>
+                        <h3>Our Vision</h3>
+                        <p>We aspire to become a world class pharmaceutical company with a significant presence in a range of Therapeutic segments.</p>
                     </div>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="col-md-4">
-                    <div class="work-item work-02 wow bounceIn" data-wow-duration="2.0s">
-
-                        <div class="work-icon">
-                            <span>
-                                <i class="fa-solid fa-tags"></i>
-                            </span>
+                <!-- Mission Card -->
+                <div class="col-lg-6">
+                    <div class="mv-card">
+                        <div class="mv-icon-box">
+                            <i class="fa-solid fa-bullseye mt-1"></i>
                         </div>
-
-                        <h3 class="custom-title mb-2">
-                            Check Product Pricing
-                        </h3>
-
-                        <p class="mb-0">
-                            Check the available pack sizes along with distributor price,
-                            retail price and MRP for each product variant.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="col-md-4">
-                    <div class="work-item work-03 wow bounceIn" data-wow-duration="3.0s">
-
-                        <div class="work-icon">
-                            <span>
-                                <i class="fa-solid fa-handshake"></i>
-                            </span>
-                        </div>
-
-                        <h3 class="custom-title mb-2">
-                            Confirm & Pay
-                        </h3>
-
-                        <p class="mb-0">
-                            Discuss your requirements, benefit from negotiable rates
-                            and complete payment according to the same-day payment condition.
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Work Section -->
-
-    <!-- Start Quality Commitment Section -->
-    <section class="quality-commitment-section section">
-        <div class="container">
-            <div class="section-header about-center-header">
-                <span class="badge badge-md bg-primary mb-1">Our Standards</span>
-                <h2 class="section-title-one mb-2">Committed to Quality &amp; Purity</h2>
-                <p class="section-desc">At Sri Gopinath Food Product, we maintain the highest standards of
-                    production to ensure every drop and spoonful adds perfect flavor to your kitchen.</p>
-            </div>
-
-            <div class="row g-4 justify-content-center mt-2">
-                <!-- Value 1 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="quality-card">
-                        <div class="quality-icon-wrapper">
-                            <i class="fa-solid fa-leaf"></i>
-                        </div>
-                        <h3 class="quality-card-title">100% Pure &amp; Natural</h3>
-                        <p class="quality-card-text">Our Rose Water and Kewra Water are distilled using
-                            traditional methods to preserve their authentic, natural aroma without harsh
-                            additives.</p>
-                    </div>
-                </div>
-
-                <!-- Value 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="quality-card">
-                        <div class="quality-icon-wrapper">
-                            <i class="fa-solid fa-flask"></i>
-                        </div>
-                        <h3 class="quality-card-title">Hygienically Processed</h3>
-                        <p class="quality-card-text">Produced at our dedicated Sabji Bagan, Kamarhati factory
-                            with strict sanitary oversight, ensuring safe and premium quality products.</p>
-                    </div>
-                </div>
-
-                <!-- Value 3 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="quality-card">
-                        <div class="quality-icon-wrapper">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
-                        <h3 class="quality-card-title">Trusted by Kitchens</h3>
-                        <p class="quality-card-text">From local eateries to home cooks, our sauces and vinegars
-                            are relied upon daily for consistent flavor, texture, and value.</p>
+                        <i class="fa-solid fa-bullseye mv-watermark-icon"></i>
+                        <h3>Our Mission</h3>
+                        <p>Agshov Pharmaceuticals strives to be a global brand dealing with Newer Molecules or Formulations in therapeutic area.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Quality Commitment Section -->
-
-    <!-- Start FAQ Section -->
-    <section class="faq-section-two section">
-
-        <div class="container">
-
-            <div class="section-header about-center-header">
-                <span class="badge badge-md bg-primary mb-1">FAQ</span>
-
-                <h2 class="section-title-one mb-0">
-                    General Questions
-                </h2>
-            </div>
-
-            <div class="row about-faq-row">
-
-                <div class="col-lg-9">
-
-                    <div class="accordion faq-accordion" id="accordionFaq">
-
-                        <!-- FAQ 1 -->
-                        <div class="accordion-item show mb-3">
-                            <div class="accordion-header">
-
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-collapseOne" aria-expanded="true"
-                                    aria-controls="faq-collapseOne">
-
-                                    What products does Sri Gopinath Food Product offer?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapseOne" class="accordion-collapse collapse show"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        Our product range includes Rose Water, Kewra Water,
-                                        Tomato Sauce, Green Chilli Sauce, Soya Sauce,
-                                        Vinegar and Continental Sauce.
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <!-- FAQ 2 -->
-                        <div class="accordion-item mb-3">
-
-                            <div class="accordion-header">
-
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq-collapsetwo"
-                                    aria-expanded="false" aria-controls="faq-collapsetwo">
-
-                                    What pack sizes are available?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapsetwo" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        Rose Water and Kewra Water are available in
-                                        100ml and 200ml. Tomato Sauce, Green Chilli Sauce
-                                        and Soya Sauce are available in 100ml, 200ml
-                                        and 650ml. Vinegar is available in 100ml and
-                                        650ml, while Continental Sauce is available in 650ml.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FAQ 3 -->
-                        <div class="accordion-item mb-3">
-
-                            <div class="accordion-header">
-
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq-collapsthree"
-                                    aria-expanded="false" aria-controls="faq-collapsthree">
-
-                                    Do you offer distributor and retail pricing?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapsthree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        Yes. Our rate chart provides separate Distributor
-                                        Price, Retail Price and MRP for the available
-                                        product variants.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FAQ 4 -->
-                        <div class="accordion-item mb-3">
-
-                            <div class="accordion-header">
-
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq-collapsefour"
-                                    aria-expanded="false" aria-controls="faq-collapsefour">
-
-                                    Are your product rates negotiable?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapsefour" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        Yes. According to our rate chart, rates are
-                                        negotiable. Prices may also vary depending
-                                        upon market conditions.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FAQ 5 -->
-                        <div class="accordion-item mb-3">
-
-                            <div class="accordion-header">
-
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq-collapsefive"
-                                    aria-expanded="false" aria-controls="faq-collapsefive">
-
-                                    What is the payment condition?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapsefive" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        The payment condition mentioned in the rate
-                                        chart is same-day payment.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FAQ 6 -->
-                        <div class="accordion-item mb-3">
-
-                            <div class="accordion-header">
-
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq-collapsesix"
-                                    aria-expanded="false" aria-controls="faq-collapsesix">
-
-                                    Where is Sri Gopinath Food Product located?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapsesix" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        Our office is located at D-10, Jagannath Ghat Road,
-                                        Kolkata - 700007. Our factory address is Sabji Bagan,
-                                        Kamarhati, Kolkata - 700109.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FAQ 7 -->
-                        <div class="accordion-item mb-3">
-
-                            <div class="accordion-header">
-
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq-collapseseven"
-                                    aria-expanded="false" aria-controls="faq-collapseseven">
-
-                                    How can I contact Sri Gopinath Food Product?
-
-                                </button>
-
-                            </div>
-
-                            <div id="faq-collapseseven" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFaq">
-
-                                <div class="accordion-body">
-                                    <p class="mb-0">
-                                        You can contact us at
-                                        <a href="tel:+919830934230">
-                                            9830934230
-                                        </a>
-                                        /
-                                        <a href="tel:+919883854486">
-                                            9883854486
-                                        </a>
-                                        for product and business enquiries.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+    <!-- MISSION & VISION AREA END -->
+</section>
+<!-- ABOUT AGSHOV AREA END -->
+
+<!-- Core Values Cards -->
+<div class="container agshov-values-section">
+    <div class="row">
+        <div class="col-lg-12 text-center mb-50">
+            <h6 class="agshov-about-subtitle">What Drives Us</h6>
+            <h2 class="agshov-values-title">Our Core Values</h2>
         </div>
-
-    </section>
-    <!-- End FAQ Section -->
-
-    <!-- Start Testimonial Section -->
-    <section class="testimonial-section section">
-        <div class="container">
-            <div class="section-header text-center wow fadeInUp">
-                <h2 class="d-flex align-items-center justify-content-center section-title-one mb-2">
-                    <span class="text-bar"></span> Testimonials From Customers <span class="text-bar"></span>
-                </h2>
-                <p>Genuine feedback from our valued customers who chose us with trust.</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 d-flex wow fadeInUp">
-                    <div class="testimonial-item flex-fill text-center">
-                        <div class="quatation-icon">
-                            <img src="/assets/img/quatation-icon.svg" alt="quote" class="img-fluid">
-                        </div>
-                        <div class="review-star justify-content-center mb-2">
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                        <div class="testimonial-content">
-                            <p class="description">They went above and beyond to meet my expectations. I finally
-                                found a company I can depend on.</p>
-
-                            <p class="author-name"><a href="#">Peter Marshall</a></p>
-                            <p class="location">France</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex wow fadeInUp">
-                    <div class="testimonial-item flex-fill text-center">
-                        <div class="quatation-icon">
-                            <img src="/assets/img/quatation-icon.svg" alt="quote" class="img-fluid">
-                        </div>
-                        <div class="review-star justify-content-center mb-2">
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                        <div class="testimonial-content">
-                            <p class="description">Absolutely loved the products! Packed with flavor and perfect quality for our family meals.</p>
-
-                            <p class="author-name"><a href="#">Emily Johnson</a></p>
-                            <p class="location">USA</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex wow fadeInUp">
-                    <div class="testimonial-item flex-fill text-center">
-                        <div class="quatation-icon">
-                            <img src="/assets/img/quatation-icon.svg" alt="quote" class="img-fluid">
-                        </div>
-                        <div class="review-star justify-content-center mb-2">
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                            <i class="fa-solid fa-star text-warning"></i>
-                        </div>
-                        <div class="testimonial-content">
-                            <p class="description">The sauces and rose water are amazing! Consistent quality and prompt delivery every time.</p>
-
-                            <p class="author-name"><a href="#">Benjamin Taylor</a></p>
-                            <p class="location">Russia</p>
-                        </div>
-                    </div>
-                </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="agshov-value-card">
+                <div class="value-card-icon"><i class="fa-solid fa-handshake"></i></div>
+                <h4>Integrity</h4>
+                <p>Unwavering ethical standards in all our operations and business conduct.</p>
             </div>
         </div>
-
-    </section>
-    <!-- End Testimonial Section -->
-
-    <!-- Start Partners Section -->
-    <section class="partner-section section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title-one mb-0">Our Partners</h2>
-            </div>
-            <div class="partner-slider">
-                <div class="partner-item">
-                    <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">
-                </div>
-                <div class="partner-item">
-                    <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">
-                </div>
-                <div class="partner-item">
-                    <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">
-                </div>
-                <div class="partner-item">
-                    <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">
-                </div>
-                <div class="partner-item">
-                    <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">
-                </div>
-                <div class="partner-item">
-                    <img src="/assets/img/logo.jpeg" alt="partner" class="img-fluid">
-                </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="agshov-value-card">
+                <div class="value-card-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <h4>Trust</h4>
+                <p>Building lasting relationships with doctors, patients, and partners.</p>
             </div>
         </div>
-    </section>
-    <!-- End Partners Section -->
-
-    <?php if (isset($page->description) && !empty(trim(strip_tags($page->description)))): ?>
-    <section class="section py-4">
-        <div class="container">
-            <div><?= $page->description ?></div>
+        <div class="col-lg-3 col-md-6">
+            <div class="agshov-value-card">
+                <div class="value-card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <h4>Innovation</h4>
+                <p>Research-driven focus to create next-generation pharmaceutical solutions.</p>
+            </div>
         </div>
-    </section>
-    <?php endif; ?>
+        <div class="col-lg-3 col-md-6">
+            <div class="agshov-value-card">
+                <div class="value-card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                <h4>Care</h4>
+                <p>Patient-first approach ensuring quality medicines reach every need.</p>
+            </div>
+        </div>
+    </div>
 </div>

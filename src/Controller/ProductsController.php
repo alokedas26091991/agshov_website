@@ -110,10 +110,7 @@ class ProductsController extends AppController
 			->contain(['Categories', 'SubCategories', 'ProductImages'])
 			->where([
 				'Products.parent_id IS' => null,
-				'OR' => [
-					'Products.is_deleted' => 0,
-					'Products.is_deleted IS' => null
-				]
+				'Products.is_deleted' => 0
 			])
 			->order(['Products.id' => 'DESC']);
 
@@ -208,15 +205,22 @@ class ProductsController extends AppController
 	public function details($slug = null)
 	{
 		$this->_show_left_panel = false;
-		$product = $this->Products->findBySlug($slug)->contain(['Users', 'Filters', 'FilterOptions', 'ProductImages', 'UserProducts', 'Categories' => function ($q) {
-			return $q->select(['id', 'name']);
-		}, 'SubCategories' => function ($q) {
-			return $q->select(['id', 'name', 'category_id']);
-		}, 'Brands' => function ($q) {
-			return $q->select(['id', 'name', 'slug']);
-		}, 'Users' => function ($q) {
-			return $q->select(['name', 'photo']);
-		}])->first();
+		$altSlug1 = str_replace('-r-', '-', (string)$slug);
+		$altSlug2 = str_replace('-', '-r-', (string)$slug);
+		$slugs = array_unique([$slug, $altSlug1, $altSlug2]);
+		$product = $this->Products->find()
+			->where([
+				'Products.slug IN' => $slugs
+			])
+			->contain(['Users', 'Filters', 'FilterOptions', 'ProductImages', 'UserProducts', 'Categories' => function ($q) {
+				return $q->select(['id', 'name']);
+			}, 'SubCategories' => function ($q) {
+				return $q->select(['id', 'name', 'category_id']);
+			}, 'Brands' => function ($q) {
+				return $q->select(['id', 'name', 'slug']);
+			}, 'Users' => function ($q) {
+				return $q->select(['name', 'photo']);
+			}])->first();
 
 		if (!$product) {
 			throw new \Cake\Http\Exception\NotFoundException(__('Product not found'));

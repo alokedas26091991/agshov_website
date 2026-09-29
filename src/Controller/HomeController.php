@@ -338,20 +338,26 @@ class HomeController extends AppController
         $contactForm = $user->newEmptyEntity();
 
         $data = $this->request->getData();
-        if (empty($data['productname']) && !empty($data['product'])) {
-            $data['productname'] = $data['product'];
+        if (empty($data['productname'])) {
+            if (!empty($data['product_name'])) {
+                $data['productname'] = $data['product_name'];
+            } elseif (!empty($data['product'])) {
+                $data['productname'] = $data['product'];
+            } else {
+                $data['productname'] = 'General Enquiry';
+            }
         }
         $contactForm = $user->patchEntity($contactForm, $data);
-        $contactForm->created_at = date('Y-m-d');
+        $contactForm->created_at = date('Y-m-d H:i:s');
         if ($user->save($contactForm)) {
 
             $name = $this->request->getData('name');
             $email = $this->request->getData('email');
             $phone = $this->request->getData('phone');
             $message = $this->request->getData('message');
-            $product = $data['productname'] ?? '';
+            $product = $data['productname'];
             $variant = $this->request->getData('variant') ?? '';
-            $admin_email = ['daujii@srigopinathfoodproduct.com', 'accenditoresoftware0005@gmail.com'];
+            $admin_email = 'alokedas51@gmail.com';
 
             $this->loadComponent('SendMail');
             $this->SendMail->sendMail(17, $admin_email, [
@@ -366,10 +372,10 @@ class HomeController extends AppController
             if ($this->request->is('ajax')) {
                 $this->autoRender = false;
                 return $this->response->withType('application/json')
-                    ->withStringBody(json_encode(['success' => true, 'message' => 'We have received your enquiry.']));
+                    ->withStringBody(json_encode(['success' => true, 'message' => 'We have received your enquiry. Thank you!']));
             }
 
-            $this->Flash->success('We have received your enquiry.');
+            $this->Flash->success('We have received your enquiry. Thank you!');
             return $this->redirect($this->referer('/', true));
         }
 
@@ -573,7 +579,7 @@ class HomeController extends AppController
                 $email = $this->request->getData('email');
                 $mobile = $this->request->getData('mobile');
                 $message = $this->request->getData('message');
-                $admin_email = ['daujii@srigopinathfoodproduct.com', 'accenditoresoftware0005@gmail.com'];
+                $admin_email = ['alokedas51@gmail.com', 'accenditoresoftware0005@gmail.com'];
 
 
                 $this->loadComponent('SendMail');

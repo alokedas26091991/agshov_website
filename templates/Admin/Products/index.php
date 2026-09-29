@@ -28,9 +28,8 @@
                         <th>Category</th>
                         <th>Subcategory</th>
                         <th>Stock</th>
-                        <th>Retail Price</th>
-                        <th>Distributor Price</th>
                         <th>MRP</th>
+                        <th>Sale Price</th>
                         <th>GST</th>
                         <th>SKU</th>
                         <th>Status</th>
@@ -67,9 +66,8 @@
                                 <td>
                                     <span class="font-weight-bold text-dark"><?= h($product->total_quantity ?? 0) ?></span>
                                 </td>
-                                <td>₹<?= number_format((float)($product->actual_price ?? 0), 2) ?></td>
-                                <td>₹<?= number_format((float)($product->offer_price ?? 0), 2) ?></td>
                                 <td>₹<?= number_format((float)($product->mrp ?? $product->product->mrp ?? 0), 2) ?></td>
+                                <td>₹<?= number_format((float)($product->offer_price ?? $product->actual_price ?? 0), 2) ?></td>
                                 <td><?= h($product->product ? $product->product->gst_percentage : '0') ?>%</td>
                                 <td><code class="text-dark"><?= h($product->product ? $product->product->supc : '-') ?></code></td>
                                 <td>
@@ -90,7 +88,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="13" class="text-center py-4 text-muted">No products found.</td>
+                            <td colspan="12" class="text-center py-4 text-muted">No products found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

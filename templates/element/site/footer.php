@@ -1,260 +1,101 @@
-<footer class="footer">
-    <img src="/assets/img/banner/footer-img.png" alt="Footer Background" class="footer-bg">
-
-    <div class="footer-content">
-        <div class="container">
-            <div class="footer-top">
-                <div class="row g-4">
-
-                    <!-- About -->
-                    <div class="col-lg-4 col-md-12">
-                        <div class="footer-about">
-                            <a href="/">
-                                <img src="/assets/img/logo-white.png" alt="Sri Gopinath Food Product" class="footer-logo img-fluid">
-                            </a>
-
-                            <p>
-                                Sri Gopinath Food Product offers a wide range of quality
-                                food products including sauces, flavoured waters and vinegar
-                                for everyday food preparation.
-                            </p>
+<!-- FOOTER AREA START -->
+<footer class="ltn__footer-area">
+    <div class="footer-top-area section-bg-1 plr--5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-about-widget">
+                        <div class="footer-logo mb-4">
+                            <div class="site-logo">
+                                <img src="/img/logo.png" alt="Logo">
+                            </div>
+                        </div>
+                        <p>Agshov Pharmaceuticals is a fast growing pharma company in India that markets world class medicines in the niches of Opthalmology, Oncology, Diabetology, Anti Inflammatory, Anti Bacterial and Injectables among others for doctors, consumers, and healthcare professionals.</p>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-menu-widget clearfix">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about-us">About us</a></li>
+                                <li><a href="/our-products">Our Products</a></li>
+                                <li><a href="/career">Career</a></li>
+                                <li><a href="/contact-us">Contact us</a></li>
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- Products & Links -->
-                    <div class="col-lg-8 col-md-12">
-                        <div class="row g-4">
-
-                            <!-- Our Products -->
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                <div class="footer-widget">
-                                    <h3 class="footer-title">Our Products</h3>
-
-                                    <div class="footer-links">
-                                        <ul>
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Rose Water
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Kewra Water
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Tomato Sauce
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Green Chilli Sauce
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Soya Sauce
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Vinegar
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Continental Sauce
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Useful Links -->
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                                <div class="footer-widget">
-                                    <h3 class="footer-title">Useful Links</h3>
-
-                                    <div class="footer-links">
-                                        <ul>
-                                            <li>
-                                                <a href="/">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Home
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/about-us">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    About Us
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/our-products">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Products
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/contact-us">
-                                                    <i class="icon-arrow-up-right"></i>
-                                                    Contact Us
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Follow Us -->
-                            <div class="col-lg-5 col-md-4 col-12">
-                                <div class="footer-widget">
-
-                                    <h3 class="footer-title">Follow Us</h3>
-
-                                    <div class="social-icon">
-
-                                        <a href="<?= isset($social->fb) ? $social->fb : '#' ?>" aria-label="Facebook" target="_blank">
-                                            <i class="fa-brands fa-facebook-f"></i>
-                                        </a>
-
-                                  
-
-                                        <a href="<?= isset($social->instra) ? $social->instra : '#' ?>" aria-label="Instagram" target="_blank">
-                                            <i class="fa-brands fa-instagram"></i>
-                                        </a>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
+                </div>
+                <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-menu-widget clearfix">
+                        <h4 class="footer-title">Our Products</h4>
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="/our-products">Ophthalmology</a></li>
+                                <li><a href="/our-products">Anti-Allergic</a></li>
+                                <li><a href="/our-products">Antibiotics</a></li>
+                                <li><a href="/our-products">Gastro Care</a></li>
+                            </ul>
                         </div>
                     </div>
-
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-menu-widget clearfix">
+                        <h4 class="footer-title">Contact Us</h4>
+                        <div class="footer-menu">
+                            <ul>
+                                <div class="footer-address">
+                                    <ul>
+                                        <li>
+                                            <div class="footer-address-icon">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                            </div>
+                                            <div class="footer-address-info">
+                                                <p>AGSHOV PHARMACEUTICALS PVT LTD, BHAWANI ALLEN ENCLAVE, BLOCK -A, KRISHNAPUR, MONDAL PARA KOLKATA -700102</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="footer-address-icon">
+                                                <i class="fa-solid fa-phone"></i>
+                                            </div>
+                                            <div class="footer-address-info">
+                                                <p><a href="tel:9875633787">+91 9875633787</a> (Sales Enquiry)</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="footer-address-icon">
+                                                <i class="fa-solid fa-envelope"></i>
+                                            </div>
+                                            <div class="footer-address-info">
+                                                <p><a href="mailto:enquiry@agshovpharma.com">enquiry@agshovpharma.com</a></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__social-media mt-20">
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/profile.php?id=61577693850143" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Footer Contact -->
-        <div class="footer-contact">
-            <div class="container">
-                <div class="row align-items-center g-4">
-
-                    <!-- Phone -->
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="contact-item">
-
-                            <div class="contact-icon">
-                                <i class="icon-headset"></i>
-                            </div>
-
-                            <div class="contact-detail">
-                                <p>Contact Number</p>
-
-                                <p>
-                                    <a href="tel:+919830934230" class="text-white">
-                                        9830934230
-                                    </a>
-                                    
-                                </p>
-                            </div>
-
-                        </div>
+    </div>
+    <div class="ltn__copyright-area ltn__copyright-2 section-bg-7 plr--5">
+        <div class="container-fluid ltn__border-top-2">
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <div class="ltn__copyright-design clearfix text-center">
+                        <p>All Rights Reserved @ Agshov Pharmaceuticals <span class="current-year"><?= date('Y') ?></span></p>
                     </div>
-
-                    <!-- Email -->
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="contact-item">
-
-                            <div class="contact-icon">
-                                <i class="icon-mail"></i>
-                            </div>
-
-                            <div class="contact-detail">
-                                <p>Email Address</p>
-
-                                <p>
-                                    <a href="mailto:dauji@srigopinathfoodproduct.com" class="text-white">
-                                       daujii@srigopinathfoodproduct.com
-                                    </a>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Office Address -->
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="contact-item">
-
-                            <div class="contact-icon">
-                                <i class="icon-map-pin"></i>
-                            </div>
-
-                            <div class="contact-detail">
-                                <p>Office Address</p>
-
-                                <p>
-                                    D-10, Jagannath Ghat Road,
-                                    Kolkata - 700007
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Factory Address -->
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="contact-item">
-
-                            <div class="contact-icon">
-                                <i class="icon-map-pin"></i>
-                            </div>
-
-                            <div class="contact-detail">
-                                <p>Factory Address</p>
-                                <p>
-                                    Sabji Bagan, Kamarhati,
-                                    Kolkata - 700109
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <p class="copyright">
-                Copyright &copy; <?= date('Y') ?>
-                <a href="/">Sri Gopinath Food Product</a>.
-                All rights reserved.
-            </p>
-        </div>
-
     </div>
 </footer>
+<!-- FOOTER AREA END -->

@@ -1,222 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <?php
-    echo $this->element('site_meta');
-    ?>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><?= $this->fetch('title', 'Agshov Pharmaceuticals') ?></title>
+    <meta name="description" content="Agshov Pharmaceuticals Pvt Ltd">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <?php echo $this->element('site_meta'); ?>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/img/logo-white.png">
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Lucide CSS -->
-    <link rel="stylesheet" href="/assets/plugins/lucide/lucide.css">
-
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="/assets/plugins/swiper/swiper.css">
-
-    <!-- WOW CSS -->
-    <link rel="stylesheet" href="/assets/plugins/wow/css/animate.css">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="/assets/css/style.min.css">
-
-    <!-- Quick Enquiry Modal CSS -->
-    <link rel="stylesheet" href="/assets/css/quick-enquiry.css">
+    <!-- plugins css -->
+    <link rel="stylesheet" href="/css/plugins.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <?php echo $this->fetch('cssTop') ?>
 </head>
 
-<?php
-$currentPath = $this->request->getPath();
-$isHome = ($currentPath == '/' || $currentPath == '' || $currentPath == '/home');
-?>
-<body class="<?= !$isHome ? 'about-page' : '' ?>">
+<body>
+    <!-- Body main wrapper start -->
+    <div class="body-wrapper">
 
-    <!-- Begin Wrapper -->
-    <div class="main-wrapper" role="main">
         <?= $this->Flash->render() ?>
 
-        <?php if ($isHome): ?>
-            <!-- Hero Section Start -->
-            <div class="hero-section">
-                <!-- Start Header-->
-                <?= $this->element('site/header'); ?>
-                <!-- /End Header-->
+        <!-- HEADER AREA START -->
+        <?= $this->element('site/header'); ?>
+        <!-- HEADER AREA END -->
 
-                <?= $this->fetch('hero_banner') ?>
-            </div>
-            <!-- Hero Section End -->
+        <!-- MAIN CONTENT START -->
+        <?= $this->fetch('content') ?>
+        <!-- MAIN CONTENT END -->
 
-            <?= $this->fetch('content') ?>
-        <?php else: ?>
-            <!-- Start Header-->
-            <?= $this->element('site/header'); ?>
-            <!-- /End Header-->
-
-            <?= $this->fetch('content') ?>
-        <?php endif; ?>
-
-        <!-- Start Footer -->
+        <!-- FOOTER AREA START -->
         <?= $this->element('site/footer'); ?>
-        <!-- End Footer -->
+        <!-- FOOTER AREA END -->
+
     </div>
-    <!-- End Wrapper -->
+    <!-- Body main wrapper end -->
 
-    <!-- ===== Quick Enquiry Modal ===== -->
-    <div id="quickEnquiryModal" class="qe-overlay" role="dialog" aria-modal="true" aria-labelledby="qeModalTitle" aria-hidden="true">
-        <div class="qe-backdrop"></div>
-        <div class="qe-container">
-
-            <!-- Close button -->
-            <button class="qe-close" id="qeCloseBtn" aria-label="Close enquiry form">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-                </svg>
-            </button>
-
-            <!-- Header -->
-            <div class="qe-header">
-                <div class="qe-badge">Sri Gopinath Food Product</div>
-                <h2 class="qe-title" id="qeModalTitle">Quick Product Enquiry</h2>
-                <p class="qe-subtitle">Send us your requirements and we will contact you with distributor pricing details.</p>
+    <!-- Enquiry Modal Start -->
+    <?php
+    $enquiryProductsList = \Cake\ORM\TableRegistry::getTableLocator()->get('Products')
+        ->find('all')
+        ->where(['is_active' => 1, 'is_deleted' => 0, 'parent_id IS' => NULL])
+        ->order(['name' => 'ASC'])
+        ->extract('name')
+        ->toArray();
+    ?>
+    <div class="ltn__enquiry-modal-area" id="enquiry-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-visual">
+                <div class="header-text">
+                    <h3>Get a Quote</h3>
+                    <p>We'll get back to you within 24 hours.</p>
+                </div>
             </div>
-
-            <!-- Form -->
-            <form id="quickEnquiryForm" class="qe-form" novalidate autocomplete="off" action="/home/enquiry" method="post">
-                <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
-
-                <!-- Row 1: Name + Phone -->
-                <div class="qe-row">
-                    <div class="qe-field">
-                        <input type="text" id="qeName" name="name" class="qe-input" placeholder=" " required maxlength="100" pattern="[A-Za-z\s]{2,100}" aria-required="true" autocomplete="off">
-                        <label for="qeName" class="qe-label">
-                            <i class="fa-solid fa-user" aria-hidden="true"></i> Your Name
-                        </label>
-                        <span class="qe-error" id="qeNameError" role="alert" aria-live="polite"></span>
+            <div class="modal-body-form">
+                <div id="enquiry-status-message" class="mb-3 d-none"></div>
+                <form action="/home/enquiry" method="post" class="enquiry-form" id="site-enquiry-form">
+                    <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
+                    <div class="input-item with-icon">
+                        <span class="input-icon"><i class="fa-solid fa-capsules"></i></span>
+                        <select name="productname" id="enquiry_product_select" class="form-select text-dark" style="height: 50px; padding-left: 45px; border: 1px solid #e4ecf2; border-radius: 8px; width: 100%; background-color: #f8f9fa; font-size: 14px;" required>
+                            <option value="General Enquiry">Select Product / General Enquiry</option>
+                            <?php if (!empty($enquiryProductsList)): ?>
+                                <?php foreach ($enquiryProductsList as $pName): ?>
+                                    <option value="<?= h($pName) ?>"><?= h($pName) ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
                     </div>
-                    <div class="qe-field">
-                        <input type="tel" id="qePhone" name="phone" class="qe-input" placeholder=" " required maxlength="15" pattern="[0-9+\-\s]{7,15}" aria-required="true" autocomplete="off">
-                        <label for="qePhone" class="qe-label">
-                            <i class="fa-solid fa-phone" aria-hidden="true"></i> Phone Number
-                        </label>
-                        <span class="qe-error" id="qePhoneError" role="alert" aria-live="polite"></span>
+                    <div class="input-item with-icon">
+                        <span class="input-icon"><i class="fa-solid fa-user"></i></span>
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
-                </div>
-
-                <!-- Row 2: Email -->
-                <div class="qe-field">
-                    <input type="email" id="qeEmail" name="email" class="qe-input" placeholder=" " required maxlength="254" aria-required="true" autocomplete="off">
-                    <label for="qeEmail" class="qe-label">
-                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> Email Address
-                    </label>
-                    <span class="qe-error" id="qeEmailError" role="alert" aria-live="polite"></span>
-                </div>
-
-                <!-- Row 3: Product Select -->
-                <div class="qe-field">
-                    <?php
-                    $allQuickProductsList = \Cake\ORM\TableRegistry::getTableLocator()->get('Products')
-                        ->find('all')
-                        ->select(['id', 'name'])
-                        ->where(['is_deleted' => 0, 'parent_id IS' => null])
-                        ->order(['name' => 'ASC'])
-                        ->all();
-                    ?>
-                    <select id="qeProduct" name="productname" class="qe-input qe-select" required aria-required="true">
-                        <option value="" disabled selected></option>
-                        <?php foreach ($allQuickProductsList as $qp): ?>
-                            <option value="<?= h($qp->name) ?>"><?= h($qp->name) ?></option>
-                        <?php endforeach; ?>
-                        <option value="Multiple Products / General Enquiry">Multiple Products / General Enquiry</option>
-                    </select>
-                    <label for="qeProduct" class="qe-label qe-label-select">
-                        <i class="fa-solid fa-box" aria-hidden="true"></i> Select Product
-                    </label>
-                    <span class="qe-error" id="qeProductError" role="alert" aria-live="polite"></span>
-                </div>
-
-                <!-- Row 3.5: Product Variant -->
-                <div class="qe-field">
-                    <input type="text" id="qeVariant" name="variant" class="qe-input" placeholder=" " maxlength="100" autocomplete="off">
-                    <label for="qeVariant" class="qe-label">
-                        <i class="fa-solid fa-tags" aria-hidden="true"></i> Pack Size / Variant (optional, e.g. 200 ml)
-                    </label>
-                </div>
-
-                <!-- Row 4: Message -->
-                <div class="qe-field">
-                    <textarea id="qeMessage" name="message" class="qe-input qe-textarea" placeholder=" " maxlength="500" rows="3" aria-label="Requirement Details"></textarea>
-                    <label for="qeMessage" class="qe-label">
-                        <i class="fa-solid fa-comment-dots" aria-hidden="true"></i> Requirement Details (optional)
-                    </label>
-                </div>
-
-                <!-- Submit -->
-                <button type="submit" class="qe-submit" id="qeSubmitBtn">
-                    <span class="qe-submit-text">Submit Enquiry</span>
-                    <span class="qe-submit-icon" aria-hidden="true">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </span>
-                </button>
-
-            </form>
-
-            <!-- Success State -->
-            <div class="qe-success" id="qeSuccessState" aria-live="polite" hidden>
-                <div class="qe-success-icon" aria-hidden="true">
-                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="28" cy="28" r="28" fill="url(#qeSuccessGrad)" />
-                        <path d="M16 28L24 36L40 20" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <defs>
-                            <linearGradient id="qeSuccessGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#F9A826" />
-                                <stop offset="1" stop-color="#E07B24" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <h3 class="qe-success-title">Enquiry Sent!</h3>
-                <p class="qe-success-msg">Thank you. Our sales team will get back to you with rates and details shortly.</p>
-                <button class="qe-success-close" id="qeSuccessCloseBtn">Close</button>
+                    <div class="input-item with-icon">
+                        <span class="input-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="input-item with-icon">
+                        <span class="input-icon"><i class="fa-solid fa-phone"></i></span>
+                        <input type="text" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-item with-icon">
+                        <span class="input-icon textarea-icon"><i class="fa-solid fa-comment-dots"></i></span>
+                        <textarea name="message" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <div class="btn-wrapper mt-10">
+                        <button type="submit" id="enquiry-submit-btn" class="theme-btn-1 btn btn-block w-100 btn-pulse">Send Enquiry</button>
+                    </div>
+                </form>
             </div>
-
         </div>
     </div>
-    <!-- ===== /Quick Enquiry Modal ===== -->
+    <!-- Enquiry Modal End -->
+
+    <!-- All JS Plugins -->
+    <script src="/js/plugins.js"></script>
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
 
     <script>
-        var csrf_token = '<?= $this->request->getAttribute('csrfToken') ?>';
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('enquiry-modal');
+            const openBtns = document.querySelectorAll('.enquiry-btn, .quickEnquiryBtn');
+            const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+            const enquiryForm = document.getElementById('site-enquiry-form');
+            const statusMsg = document.getElementById('enquiry-status-message');
+            const submitBtn = document.getElementById('enquiry-submit-btn');
+
+            if (modal) {
+                function openModal() {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeModal() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    if (statusMsg) {
+                        statusMsg.classList.add('d-none');
+                        statusMsg.innerHTML = '';
+                    }
+                }
+
+                openBtns.forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const prodName = this.getAttribute('data-product-name') || this.dataset.productName;
+                        const prodSelect = document.getElementById('enquiry_product_select');
+
+                        if (prodSelect) {
+                            if (prodName) {
+                                let found = false;
+                                for (let i = 0; i < prodSelect.options.length; i++) {
+                                    if (prodSelect.options[i].value === prodName) {
+                                        prodSelect.selectedIndex = i;
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                                if (!found) {
+                                    const opt = new Option(prodName, prodName, true, true);
+                                    prodSelect.add(opt);
+                                }
+                            } else {
+                                prodSelect.value = 'General Enquiry';
+                            }
+                        }
+                        openModal();
+                    });
+                });
+
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+
+                if (enquiryForm) {
+                    enquiryForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Sending...';
+
+                        const formData = new FormData(enquiryForm);
+                        fetch('/home/enquiry', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = 'Send Enquiry';
+                            if (statusMsg) {
+                                statusMsg.classList.remove('d-none');
+                                if (data.success) {
+                                    statusMsg.className = 'alert alert-success p-2 small mb-3 text-center';
+                                    statusMsg.textContent = data.message || 'We have received your enquiry. Thank you!';
+                                    enquiryForm.reset();
+                                    setTimeout(() => {
+                                        closeModal();
+                                    }, 2500);
+                                } else {
+                                    statusMsg.className = 'alert alert-danger p-2 small mb-3 text-center';
+                                    statusMsg.textContent = data.message || 'An error occurred. Please try again.';
+                                }
+                            }
+                        })
+                        .catch(err => {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = 'Send Enquiry';
+                            if (statusMsg) {
+                                statusMsg.classList.remove('d-none');
+                                statusMsg.className = 'alert alert-danger p-2 small mb-3 text-center';
+                                statusMsg.textContent = 'An error occurred while sending your enquiry. Please try again.';
+                            }
+                        });
+                    });
+                }
+            }
+        });
     </script>
-    <!-- Wow JS -->
-    <script src="/assets/plugins/wow/js/wow.min.js"></script>
-
-    <!-- Bootstrap Core JS -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Swiper JS -->
-    <script src="/assets/plugins/swiper/swiper.min.js"></script>
-
-    <!-- Slider JS -->
-    <script src="/assets/js/slider.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="/assets/js/script.min.js"></script>
-
-    <!-- Quick Enquiry Modal JS -->
-    <script src="/assets/js/quick-enquiry.js"></script>
 
     <?= $this->fetch('scriptBottom') ?>
 </body>

@@ -64,7 +64,7 @@ class SendMailComponent extends Component {
         try {
             $Email = new Mailer("default");
             $fromEmail = !empty($mail_info->send_from) && strpos($mail_info->send_from, '@') !== false && strpos($mail_info->send_from, 'renukacreation') === false ? $mail_info->send_from : 'accenditoresoftware0005@gmail.com';
-            $Email->setFrom([$fromEmail => "Dauji"]);
+            $Email->setFrom([$fromEmail => "Agshov Pharmaceuticals"]);
             $Email->setEmailFormat('html');
             $Email->setTo($send_to);
             $Email->setSubject($this->_subject ?: ($mail_info->subject ?: 'New Enquiry'));

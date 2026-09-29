@@ -1,5 +1,5 @@
 <?php
-$cakeDescription = 'Sri Gopinath Food Product - Admin Panel';
+$cakeDescription = 'Agshov Pharmaceuticals - Admin Panel';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +8,9 @@ $cakeDescription = 'Sri Gopinath Food Product - Admin Panel';
   <?= $this->Html->charset() ?>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    Sri Gopinath Food Product - Admin Panel
+    Agshov Pharmaceuticals - Admin Panel
   </title>
-  <link rel="icon" href="/assets/img/logo-white.png">
+  <link rel="icon" href="/img/favicon.png">
 
   <?= $this->fetch('meta') ?>
 

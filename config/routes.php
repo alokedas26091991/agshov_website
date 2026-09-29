@@ -56,6 +56,7 @@ return static function (RouteBuilder $routes) {
 	 
 	 $builder->connect('/contact-us', ['controller' => 'Home', 'action' => 'contact', 'prefix' => FALSE]);
      $builder->connect('/about-us', ['controller' => 'StaticPages', 'action' => 'about-us', 'prefix' => FALSE]);
+     $builder->connect('/career', ['controller' => 'StaticPages', 'action' => 'career', 'prefix' => FALSE]);
      $builder->connect('/our-products', ['controller' => 'Products', 'action' => 'index', 'prefix' => FALSE]);
 	 $builder->connect('/privacy-and-policy', ['controller' => 'Pages', 'action' => 'privacypolicy', 'prefix' => FALSE]);
 	 $builder->connect('/return-policy', ['controller' => 'Pages', 'action' => 'returnpolicy', 'prefix' => FALSE]);
@@ -130,38 +131,31 @@ $builder->connect('/forget-password', ['controller' => 'Login', 'action' => 'for
          * You can remove these routes once you've connected the
          * routes you want in your application.
          */
-		  $builder->fallbacks('InflectedRoute');
-        
-    });
-$routes->prefix('admin', function (RouteBuilder $builder) {
-	//$routes->connect('', ['controller' => 'Users', 'action' => 'login', 'prefix' => 'admin']);
-   	 $builder->connect('/', ['controller' => 'Users', 'action' => 'login','prefix'=>'Admin']);
-    $builder->connect('/admin/registration', ['controller' => 'Users', 'action' => 'registration','prefix' => 'admin']);
-	$builder->connect('/admin/logout', ['controller' => 'Users', 'action' => 'logout','prefix' => 'admin']);
-    //Router::connect('/api/login', ['controller' => 'Users', 'action' => 'token', 'prefix' => 'api']);
-	
-	
-	//$routes->connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-    $builder->fallbacks('InflectedRoute');
 });
-$routes->prefix('seller', function (RouteBuilder $builder) {
-	//$routes->connect('', ['controller' => 'Users', 'action' => 'login', 'prefix' => 'admin']);
-   	 $builder->connect('/', ['controller' => 'Users', 'action' => 'login','prefix'=>'Seller']);
-    $builder->connect('/admin/registration', ['controller' => 'Users', 'action' => 'registration','prefix' => 'seller']);
-    //Router::connect('/api/login', ['controller' => 'Users', 'action' => 'token', 'prefix' => 'api']);
-	
-		$builder->connect('/seller/logout', ['controller' => 'Users', 'action' => 'logout','prefix' => 'seller']);
-	//$routes->connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-    $builder->fallbacks('InflectedRoute');
-});
-$routes->prefix('vendor', function (RouteBuilder $builder) {
-	//$routes->connect('', ['controller' => 'Users', 'action' => 'login', 'prefix' => 'admin']);
-   	 $builder->connect('/', ['controller' => 'Users', 'action' => 'login','prefix'=>'vendor']);
-    $builder->connect('/admin/registration', ['controller' => 'Users', 'action' => 'registration','prefix' => 'vendor']);
-    //Router::connect('/api/login', ['controller' => 'Users', 'action' => 'token', 'prefix' => 'api']);
 
-	
-	//$routes->connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+$routes->prefix('admin', function (RouteBuilder $builder) {
+    $builder->connect('/', ['controller' => 'Users', 'action' => 'login']);
+    $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $builder->connect('/registration', ['controller' => 'Users', 'action' => 'registration']);
+    $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    $builder->fallbacks('InflectedRoute');
+});
+
+$routes->prefix('seller', function (RouteBuilder $builder) {
+    $builder->connect('/', ['controller' => 'Users', 'action' => 'login']);
+    $builder->connect('/registration', ['controller' => 'Users', 'action' => 'registration']);
+    $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    $builder->fallbacks('InflectedRoute');
+});
+
+$routes->prefix('vendor', function (RouteBuilder $builder) {
+    $builder->connect('/', ['controller' => 'Users', 'action' => 'login']);
+    $builder->connect('/registration', ['controller' => 'Users', 'action' => 'registration']);
+    $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    $builder->fallbacks('InflectedRoute');
+});
+
+$routes->scope('/', function (RouteBuilder $builder) {
     $builder->fallbacks('InflectedRoute');
 });
 

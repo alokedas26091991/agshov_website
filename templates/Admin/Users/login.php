@@ -26,10 +26,10 @@
         <div class="col-lg-4 col-md-6 mx-auto">
           <div class="admin-login-card text-center py-5 px-4 px-sm-5">
             <div class="brand-logo-wrap mb-4">
-              <img src="/assets/img/logo-white.png" style="height: 42px; width: auto; object-fit: contain;" alt="Dauji Logo">
-              <span class="fw-bold fs-4 text-white">Dauji Admin</span>
+              <img src="/img/logo.png" style="height: 48px; width: auto; object-fit: contain;" alt="Agshov Logo">
+              <span class="fw-bold fs-4 text-white">Agshov Admin</span>
             </div>
-            <h4 class="fw-bold text-dark mb-1">Sri Gopinath Food Product</h4>
+            <h4 class="fw-bold text-dark mb-1">Agshov Pharmaceuticals</h4>
             <p class="text-muted small mb-4">Sign in with your administrative credentials to continue.</p>
 
             <?= $this->Flash->render() ?>

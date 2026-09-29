@@ -27,15 +27,15 @@ class ProductsTable extends Table
 
         $this->belongsTo('Items', [
             'foreignKey' => 'item_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('Categories', [
             'foreignKey' => 'category_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
 		$this->belongsTo('SubCategories', [
             'foreignKey' => 'sub_category_id',
@@ -102,10 +102,11 @@ class ProductsTable extends Table
         ]);
 
 		$this->addBehavior('Muffin/Slug.Slug', [
-       'displayField'=>'name',
-	   'Model.beforeSave' => 'beforeSave',
-	   'onUpdate'=>true
-    ]);
+            'displayField' => 'name',
+            'maxLength' => 255,
+            'Model.beforeSave' => 'beforeSave',
+            'onUpdate' => true
+        ]);
     }
 
     /**
@@ -148,12 +149,31 @@ class ProductsTable extends Table
 			if (!empty($entity->supc)) {
 				$entity->name = $entity->supc;
 			} elseif (!empty($entity->category_id)) {
-				$categories = TableRegistry::getTableLocator()->get('Categories');
+				$categories = \Cake\ORM\TableRegistry::getTableLocator()->get('Categories');
 				$cat = $categories->find()->where(['id' => $entity->category_id])->first();
 				$entity->name = $cat ? $cat->name : 'Product';
 			} else {
 				$entity->name = 'Product ' . date('YmdHis');
 			}
+		}
+	}
+
+	public function afterSave($event, $entity, $options) {
+		if (!empty($entity->id)) {
+			$userProductsTable = \Cake\ORM\TableRegistry::getTableLocator()->get('UserProducts');
+			$userProduct = $userProductsTable->find()->where(['product_id' => $entity->id])->first();
+			if (!$userProduct) {
+				$userProduct = $userProductsTable->newEmptyEntity();
+				$userProduct->product_id = $entity->id;
+			}
+			$userProduct->user_id = $entity->user_id ?? 1;
+			if (isset($entity->actual_price)) { $userProduct->actual_price = $entity->actual_price; }
+			if (isset($entity->offer_price)) { $userProduct->offer_price = $entity->offer_price; }
+			if (isset($entity->mrp)) { $userProduct->mrp = $entity->mrp; }
+			if (isset($entity->total_quantity)) { $userProduct->total_quantity = $entity->total_quantity; }
+			if (isset($entity->is_active)) { $userProduct->is_active = $entity->is_active; }
+			if (isset($entity->is_deleted)) { $userProduct->is_deleted = $entity->is_deleted; }
+			$userProductsTable->save($userProduct, ['atomic' => false]);
 		}
 	}
 }
