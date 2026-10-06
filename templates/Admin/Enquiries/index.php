@@ -1,39 +1,55 @@
 <div class="row mb-4 align-items-center">
     <div class="col">
-        <h3 class="font-weight-bold text-dark mb-1">Customer Enquiries</h3>
-        <p class="text-muted small mb-0">View product inquiry submissions and messages from customers.</p>
+        <h3 class="font-weight-bold text-dark mb-1">Customer Enquiries & Career Applications</h3>
+        <p class="text-muted small mb-0">View product inquiry submissions and career job applications.</p>
     </div>
 </div>
 
-<div class="card card-modern border-0 shadow-sm">
+<!-- Navigation Tabs -->
+<ul class="nav nav-tabs nav-tabs-modern mb-3 border-bottom-0">
+    <li class="nav-item">
+        <a href="<?= $this->Url->build(['action' => 'index', '?' => ['tab' => 'product']]) ?>" class="nav-link px-4 py-2 font-weight-bold <?= $tab === 'product' ? 'active bg-white border-bottom-0 shadow-sm text-primary' : 'text-secondary' ?>" style="border-radius: 10px 10px 0 0;">
+            <i class="fa-solid fa-boxes-stacked me-2"></i> Product Enquiries
+            <span class="badge <?= $tab === 'product' ? 'bg-primary text-white' : 'bg-secondary text-white' ?> rounded-pill ms-2"><?= number_format($productCount) ?></span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="<?= $this->Url->build(['action' => 'index', '?' => ['tab' => 'career']]) ?>" class="nav-link px-4 py-2 font-weight-bold <?= $tab === 'career' ? 'active bg-white border-bottom-0 shadow-sm text-success' : 'text-secondary' ?>" style="border-radius: 10px 10px 0 0;">
+            <i class="fa-solid fa-user-graduate me-2"></i> Career Applications
+            <span class="badge <?= $tab === 'career' ? 'bg-success text-white' : 'bg-secondary text-white' ?> rounded-pill ms-2"><?= number_format($careerCount) ?></span>
+        </a>
+    </li>
+</ul>
+
+<div class="card card-modern border-0 shadow-sm" style="border-top-left-radius: 0;">
     <div class="card-body p-4">
         <div class="table-responsive">
             <table class="table table-hover align-middle table-modern mb-0">
                 <thead>
                     <tr>
                         <th style="width: 50px;">#</th>
-                        <th>Enquiry Date</th>
-                        <th>Product</th>
-                        <th>Customer Name</th>
+                        <th><?= $tab === 'career' ? 'Application Date' : 'Enquiry Date' ?></th>
+                        <th><?= $tab === 'career' ? 'Position Applied' : 'Product' ?></th>
+                        <th><?= $tab === 'career' ? 'Applicant Name' : 'Customer Name' ?></th>
                         <th>Contact Info</th>
-                        <th>Message</th>
+                        <th><?= $tab === 'career' ? 'Brief / Details' : 'Message' ?></th>
                         <th class="text-end" style="width: 100px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (!empty($enquiries) && count($enquiries) > 0): ?>
-                        <?php $serialNumber = 1; foreach ($enquiries as $enquiry): ?>
+                        <?php $serialNumber = $this->Paginator->counter('{{start}}'); foreach ($enquiries as $enquiry): ?>
                             <tr>
                                 <td class="font-weight-bold text-muted"><?= $serialNumber++ ?></td>
                                 <td>
                                     <span class="text-muted small">
-                                        <?= $enquiry->created_at ? date("d M Y, h:i A", strtotime($enquiry->created_at)) : '-' ?>
+                                        <?= $enquiry->created_at ? date("d M Y", strtotime((string)$enquiry->created_at)) : '-' ?>
                                     </span>
                                 </td>
                                 <td>
                                     <?php if (!empty($enquiry->productname)): ?>
-                                        <span class="badge badge-primary bg-primary bg-opacity-10 text-primary font-weight-bold px-3 py-1 mb-1 d-inline-block">
-                                            <i class="fa-solid fa-box me-1"></i> <?= h($enquiry->productname) ?>
+                                        <span class="badge <?= $tab === 'career' ? 'bg-success bg-opacity-10 text-success' : 'bg-primary bg-opacity-10 text-primary' ?> font-weight-bold px-3 py-1 mb-1 d-inline-block">
+                                            <i class="fa-solid <?= $tab === 'career' ? 'fa-briefcase' : 'fa-box' ?> me-1"></i> <?= h(str_replace('Career: ', '', $enquiry->productname)) ?>
                                         </span>
                                         <?php if (!empty($enquiry->variant)): ?>
                                             <div class="mt-1">
@@ -43,7 +59,7 @@
                                             </div>
                                         <?php endif; ?>
                                     <?php else: ?>
-                                        <span class="badge badge-secondary bg-secondary bg-opacity-10 text-secondary px-3 py-1">General Enquiry</span>
+                                        <span class="badge bg-secondary bg-opacity-10 text-secondary px-3 py-1"><?= $tab === 'career' ? 'General Career' : 'General Enquiry' ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -58,18 +74,21 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="text-dark small mb-0" style="max-width: 300px; white-space: normal;">
+                                    <p class="text-dark small mb-0" style="max-width: 320px; white-space: normal;">
                                         <?= h($enquiry->message) ?>
                                     </p>
                                 </td>
                                 <td class="text-end">
-                                    <?= $this->Form->postLink('<i class="fa-solid fa-trash"></i>', ['action' => 'delete', $enquiry->id], ['confirm' => __('Are you sure you want to delete this enquiry?'), 'escape' => false, 'class' => 'btn btn-sm btn-outline-danger rounded-circle', 'title' => __('Delete Enquiry')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa-solid fa-trash"></i>', ['action' => 'delete', $enquiry->id], ['confirm' => __('Are you sure you want to delete this ' . ($tab === 'career' ? 'career application' : 'enquiry') . '?'), 'escape' => false, 'class' => 'btn btn-sm btn-outline-danger rounded-circle', 'title' => __('Delete')]) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="7" class="text-center py-4 text-muted">No customer enquiries found.</td>
+                            <td colspan="7" class="text-center py-5 text-muted">
+                                <i class="fa-solid <?= $tab === 'career' ? 'fa-user-graduate' : 'fa-inbox' ?> fa-2x mb-3 d-block opacity-50"></i>
+                                No <?= $tab === 'career' ? 'career applications' : 'product enquiries' ?> found.
+                            </td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

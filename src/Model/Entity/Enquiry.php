@@ -28,6 +28,7 @@ class Enquiry extends Entity
      * @var array
      */
     protected $_accessible = [
+        'type' => true,
         'name' => true,
         'productname' => true,
         'variant' => true,

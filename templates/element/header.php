@@ -1,7 +1,7 @@
 <?php
-$c_name = $this->request->getParam('controller');
-$a_name = $this->request->getParam('action');
-$active = $this->request->getAttribute('params');
+$currentController = strtolower((string)($this->request->getParam('controller') ?? ''));
+$currentAction = strtolower((string)($this->request->getParam('action') ?? ''));
+$normCurrentController = preg_replace('/[^a-z0-9]/', '', $currentController);
 ?>
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="navbar-brand-wrapper d-flex justify-content-between align-items-center px-3">
@@ -55,7 +55,7 @@ $active = $this->request->getAttribute('params');
 <div class="container-fluid page-body-wrapper">
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-      <li class="nav-item <?= ($active['action'] == 'dashboard') ? 'active' : '' ?>">
+      <li class="nav-item <?= ($currentAction === 'dashboard' && $normCurrentController === 'users') ? 'active' : '' ?>">
         <a href="/admin/users/dashboard" class="nav-link d-flex align-items-center">
           <i class="fa-solid fa-gauge me-2"></i>
           <span class="menu-title">Dashboard</span>
@@ -68,22 +68,23 @@ $active = $this->request->getAttribute('params');
           $controller_class_active = '';
           $collapse_show = '';
           if (is_array($value)) {
-            if ($controllerName == $active['controller']) {
+            $normControllerName = preg_replace('/[^a-z0-9]/', '', strtolower((string)$controllerName));
+            if ($normControllerName === $normCurrentController) {
               $controller_class_active = 'active';
               $collapse_show = 'show';
             }
         ?>
             <li class="nav-item <?= $controller_class_active ?>">
-              <a class="nav-link" data-bs-toggle="collapse" href="#<?= $controllerName ?>" aria-expanded="<?= $controller_class_active ? 'true' : 'false' ?>" aria-controls="<?= strtolower($controllerName) ?>">
+              <a class="nav-link" data-bs-toggle="collapse" href="#menu-<?= h($controllerName) ?>" aria-expanded="<?= $controller_class_active ? 'true' : 'false' ?>" aria-controls="menu-<?= h($controllerName) ?>">
                 <i class="fa-solid fa-folder me-2"></i>
                 <span class="menu-title"><?= h($value['caption']) ?></span>
                 <i class="fa-solid fa-chevron-down menu-arrow ms-auto"></i>
               </a>
-              <div class="collapse <?= $collapse_show ?>" id="<?= $controllerName ?>">
+              <div class="collapse <?= $collapse_show ?>" id="menu-<?= h($controllerName) ?>">
                 <ul class="nav flex-column sub-menu ps-3">
                   <?php foreach ($value['links'] as $l => $cap) {
                     $method_class_active = '';
-                    if ($l == $active['action'] && $controllerName == $active['controller']) {
+                    if (strtolower((string)$l) === $currentAction && $normControllerName === $normCurrentController) {
                       $method_class_active = 'active';
                     }
                   ?>

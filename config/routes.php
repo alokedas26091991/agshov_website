@@ -113,6 +113,9 @@ $builder->connect('/forget-password', ['controller' => 'Login', 'action' => 'for
 	$builder->connect('/expertise/pet-consultation', 
         ['controller' => 'Expertise', 'action' => 'petconsultation']
     ); 
+
+	$builder->connect('/page/:slug', ['controller' => 'SeoPages', 'action' => 'display', 'prefix' => FALSE])->setPass(['slug']);
+	$builder->connect('/:slug', ['controller' => 'SeoPages', 'action' => 'display', 'prefix' => FALSE])->setPass(['slug']);
     
 
 		
@@ -138,6 +141,10 @@ $routes->prefix('admin', function (RouteBuilder $builder) {
     $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
     $builder->connect('/registration', ['controller' => 'Users', 'action' => 'registration']);
     $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    $builder->connect('/seo-pages', ['controller' => 'SeoPages', 'action' => 'index']);
+    $builder->connect('/seo-pages/:action/*', ['controller' => 'SeoPages']);
+    $builder->connect('/seo_pages', ['controller' => 'SeoPages', 'action' => 'index']);
+    $builder->connect('/seo_pages/:action/*', ['controller' => 'SeoPages']);
     $builder->fallbacks('InflectedRoute');
 });
 

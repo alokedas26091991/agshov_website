@@ -338,17 +338,33 @@ class HomeController extends AppController
         $contactForm = $user->newEmptyEntity();
 
         $data = $this->request->getData();
-        if (empty($data['productname'])) {
-            if (!empty($data['product_name'])) {
-                $data['productname'] = $data['product_name'];
-            } elseif (!empty($data['product'])) {
-                $data['productname'] = $data['product'];
-            } else {
-                $data['productname'] = 'General Enquiry';
+
+        $isCareer = (!empty($data['type']) && $data['type'] === 'career') ||
+                    (!empty($data['subject']) && strpos($data['subject'], 'Career') !== false) ||
+                    (!empty($data['productname']) && strpos($data['productname'], 'Career') !== false);
+
+        if ($isCareer) {
+            $data['type'] = 'career';
+            if (empty($data['productname'])) {
+                $data['productname'] = !empty($data['subject']) ? $data['subject'] : 'Career Application';
+            }
+        } else {
+            $data['type'] = 'product';
+            if (empty($data['productname'])) {
+                if (!empty($data['product_name'])) {
+                    $data['productname'] = $data['product_name'];
+                } elseif (!empty($data['product'])) {
+                    $data['productname'] = $data['product'];
+                } elseif (!empty($data['subject'])) {
+                    $data['productname'] = $data['subject'];
+                } else {
+                    $data['productname'] = 'General Enquiry';
+                }
             }
         }
+
         $contactForm = $user->patchEntity($contactForm, $data);
-        $contactForm->created_at = date('Y-m-d H:i:s');
+        $contactForm->created_at = date('Y-m-d');
         if ($user->save($contactForm)) {
 
             $name = $this->request->getData('name');
@@ -360,22 +376,37 @@ class HomeController extends AppController
             $admin_email = 'alokedas51@gmail.com';
 
             $this->loadComponent('SendMail');
-            $this->SendMail->sendMail(17, $admin_email, [
-                'name' => $name,
-                'email' => $email,
-                'message' => $message,
-                'mobile' => $phone,
-                'productname' => $product,
-                'variant' => $variant
-            ]);
+
+            if ($isCareer) {
+                // Send Career Application Email Format (Template 18)
+                $this->SendMail->sendMail(18, $admin_email, [
+                    'name' => $name,
+                    'email' => $email,
+                    'message' => $message,
+                    'mobile' => $phone,
+                    'productname' => $product
+                ]);
+            } else {
+                // Send Product Enquiry Email Format (Template 17)
+                $this->SendMail->sendMail(17, $admin_email, [
+                    'name' => $name,
+                    'email' => $email,
+                    'message' => $message,
+                    'mobile' => $phone,
+                    'productname' => $product,
+                    'variant' => $variant
+                ]);
+            }
+
+            $successMsg = $isCareer ? 'We have received your application. Thank you!' : 'We have received your enquiry. Thank you!';
 
             if ($this->request->is('ajax')) {
                 $this->autoRender = false;
                 return $this->response->withType('application/json')
-                    ->withStringBody(json_encode(['success' => true, 'message' => 'We have received your enquiry. Thank you!']));
+                    ->withStringBody(json_encode(['success' => true, 'message' => $successMsg]));
             }
 
-            $this->Flash->success('We have received your enquiry. Thank you!');
+            $this->Flash->success($successMsg);
             return $this->redirect($this->referer('/', true));
         }
 

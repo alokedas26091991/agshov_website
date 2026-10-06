@@ -7,9 +7,8 @@
     var footer = $('.footer');
     var sidebar = $('.sidebar');
 
-    //Add active class to nav-link based on url dynamically
-    //Active class can be hard coded directly in html file also as required
-
+    // Add active class to nav-link based on url dynamically (Disabled to let server side handle precise active highlighting)
+    /*
     function addActiveClass(element) {
       if (current === "") {
         //for root url
@@ -24,10 +23,6 @@
         //for other url
         if (element.attr('href').indexOf(current) !== -1) {
           element.parents('.nav-item').last().addClass('active');
-          //if (element.parents('.sub-menu').length) {
-           // element.closest('.collapse').addClass('show');
-           // element.addClass('active');
-          //}
           if (element.parents('.submenu-item').length) {
             element.addClass('active');
           }
@@ -40,6 +35,7 @@
       var $this = $(this);
       addActiveClass($this);
     })
+    */
 
     $('.horizontal-menu .nav li a').each(function() {
       var $this = $(this);

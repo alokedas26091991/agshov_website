@@ -139,7 +139,7 @@ $cakeDescription = 'Agshov Pharmaceuticals - Admin Panel';
     .sidebar .nav .nav-item {
       margin-bottom: 4px !important;
     }
-    .sidebar .nav .nav-item .nav-link {
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link {
       color: #cbd5e1 !important;
       font-size: 14px !important;
       font-weight: 500 !important;
@@ -150,7 +150,7 @@ $cakeDescription = 'Agshov Pharmaceuticals - Admin Panel';
       transition: all 0.2s ease !important;
       background: transparent !important;
     }
-    .sidebar .nav .nav-item .nav-link i {
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link i {
       color: #94a3b8 !important;
       font-size: 16px !important;
       margin-right: 12px !important;
@@ -158,29 +158,29 @@ $cakeDescription = 'Agshov Pharmaceuticals - Admin Panel';
       text-align: center !important;
       transition: color 0.2s ease !important;
     }
-    .sidebar .nav .nav-item .nav-link span,
-    .sidebar .nav .nav-item .nav-link .menu-title {
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link span,
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link .menu-title {
       color: #cbd5e1 !important;
       font-size: 14px !important;
     }
-    .sidebar .nav .nav-item .nav-link .menu-arrow {
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link .menu-arrow {
       color: #94a3b8 !important;
     }
     
-    /* Active & Hover States */
-    .sidebar .nav .nav-item.active > .nav-link,
-    .sidebar .nav .nav-item .nav-link:hover {
+    /* Active & Hover States for Top Level Items */
+    .sidebar .nav:not(.sub-menu) > .nav-item.active > .nav-link,
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link:hover {
       background: #2563eb !important;
       color: #ffffff !important;
     }
-    .sidebar .nav .nav-item.active > .nav-link i,
-    .sidebar .nav .nav-item.active > .nav-link span,
-    .sidebar .nav .nav-item.active > .nav-link .menu-title,
-    .sidebar .nav .nav-item.active > .nav-link .menu-arrow,
-    .sidebar .nav .nav-item .nav-link:hover i,
-    .sidebar .nav .nav-item .nav-link:hover span,
-    .sidebar .nav .nav-item .nav-link:hover .menu-title,
-    .sidebar .nav .nav-item .nav-link:hover .menu-arrow {
+    .sidebar .nav:not(.sub-menu) > .nav-item.active > .nav-link i,
+    .sidebar .nav:not(.sub-menu) > .nav-item.active > .nav-link span,
+    .sidebar .nav:not(.sub-menu) > .nav-item.active > .nav-link .menu-title,
+    .sidebar .nav:not(.sub-menu) > .nav-item.active > .nav-link .menu-arrow,
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link:hover i,
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link:hover span,
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link:hover .menu-title,
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link:hover .menu-arrow {
       color: #ffffff !important;
     }
 
@@ -211,7 +211,7 @@ $cakeDescription = 'Agshov Pharmaceuticals - Admin Panel';
     }
     .sidebar .nav .sub-menu .nav-item .nav-link:hover,
     .sidebar .nav .sub-menu .nav-item .nav-link.active {
-      background: rgba(255, 255, 255, 0.08) !important;
+      background: rgba(255, 255, 255, 0.12) !important;
       color: #38bdf8 !important;
     }
     .sidebar .nav .sub-menu .nav-item .nav-link:hover span,

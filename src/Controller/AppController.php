@@ -99,12 +99,36 @@ class AppController extends Controller
 
     public function beforeRender(EventInterface $event)
     {
-       
-        
-         $this->set('_display_meta',  $this->_display_meta);
-         $this->set('_display_cart',  $this->_display_cart);
+        // Auto-lookup SEO data from SeoPages table if meta title is not yet set
+        if (!$this->_display_meta || empty($this->viewBuilder()->getVar('meta_title'))) {
+            $pathClean = trim($this->request->getPath(), '/');
+            $slugsToCheck = $pathClean !== '' ? [$pathClean, '/' . $pathClean] : ['home', '/home'];
+            if ($pathClean === '' || $pathClean === 'home') {
+                $slugsToCheck[] = '';
+                $slugsToCheck[] = '/';
+            }
+
+            try {
+                $seoPagesTable = TableRegistry::getTableLocator()->get('SeoPages');
+                $seoPage = $seoPagesTable->find()->where(['slug IN' => $slugsToCheck])->first();
+                if ($seoPage) {
+                    $this->_display_meta = true;
+                    $this->set('meta_title', !empty($seoPage->meta_title) ? $seoPage->meta_title : $seoPage->name);
+                    $this->set('meta_keywords', !empty($seoPage->meta_keywords) ? $seoPage->meta_keywords : '');
+                    $this->set('meta_desc', !empty($seoPage->meta_desc) ? $seoPage->meta_desc : '');
+                    $this->set('canonical', !empty($seoPage->canonical) ? $seoPage->canonical : '');
+                    $this->set('title', !empty($seoPage->name) ? $seoPage->name : '');
+                    $this->set('robot', !empty($seoPage->robots) ? $seoPage->robots : 'index,follow');
+                }
+            } catch (\Exception $e) {
+                // Ignore if table not found or query fails
+            }
+        }
+
+        $this->set('_display_meta',  $this->_display_meta);
+        $this->set('_display_cart',  $this->_display_cart);
          
-         $cache_variable = "menu_list";
+        $cache_variable = "menu_list";
     
         $categoryObj = TableRegistry::getTableLocator()->get('Categories');
         $menu=$categoryObj->find("all",[
@@ -209,7 +233,7 @@ class AppController extends Controller
         
             $Users = TableRegistry::getTableLocator()->get('Users');
             $User = $Users->newEmptyEntity();
-            if ($this->request->is('post')) {
+            if ($this->request->is('post') && $this->request->getData('signup_submit') == '1') {
     
                 $User = $Users->patchEntity($User, $this->request->getData(), ['validate' => false]);
                 $User->date_of_registration = date('Y-m-d');
@@ -240,157 +264,101 @@ class AppController extends Controller
             
             
         }
-        
 
-    
-    
-   
-	
-    private function addcart($friendlyUrl = null,$quentity=1) 
+	protected function setMeta($object = null, $type = TRUE)
     {
-        
-            
-        
-       
-            $CartItems = \Cake\ORM\TableRegistry::getTableLocator()->get('CartItems');
-             $Products = \Cake\ORM\TableRegistry::getTableLocator()->get('Products');
-             $this->Carts = \Cake\ORM\TableRegistry::getTableLocator()->get('Carts');
-             
-            $product = $Products->findBySlug($friendlyUrl)->contain(['Items','UserProducts'])->first();
-            
-          
-            
-           
-            $offer=$product->offer_price;
-           
-            $actual=$product->actual_price;
-          
-            
-            $delivery=$product->delivery_charge;
-            
-         
-            
-            
-        if ($this->Auth->user('id')) {
-            
-            
-           
-        
-            
-    
-            $query = $this->Carts->find('all')->where(['user_id' => $this->Auth->user('id')]);
-                if(!$this->request->getSession()->read('Product')){
-                $data=[];
-                $data[]=$product;
-                $this->request->getSession()->write('Product', $data);
-                }else{
-                    $data=$this->request->getSession()->read('Product');
-                    $data[]=$product;
-                    $this->request->getSession()->write('Product', $data);
-                    }
-                    
-            if ($query->count() > 0) {
-                $cart = $query->first();
-            } else {
-                $cart = $this->Carts->newEmptyEntity();
-                $cart->user_id = $this->Auth->user('id');
-                $cart->ipaddress = $this->request->clientIp();
-                    
-                if ($this->Carts->save($cart)) {
-                    $cart = $this->Carts->get($cart->id);
-                    $cart->order_id = time() . '-' . $cart->id;
-                    $this->Carts->save($cart);
-                } else {
-                    $this->Flash->error(__('The cart could not be saved. Please, try again.'));
-                    return $this->redirect(['controller' => 'Products', 'action' => 'details', $friendlyUrl]);
-                }
-            }
-            
-            
-
-            $cartitemquery = $CartItems->find('all')->where(['cart_id' => $cart->id, 'product_id' => $product->id]);
-            if ($cartitemquery->count() == 0) {
-                
-               
-
-                $cart->gross_amt = $cart->gross_amt + (!empty($product->offer_price) ? $product->offer_price : 0);
-                if ($cart->gross_amt > DELIVERY_AMOUNT) {
-                    $cart->total_delivery_charge = MINIMUM_DELIVERY_CHARGE;
-                } else {
-                    $cart->total_delivery_charge = MAXIMUM_DELIVERY_CHARGE;
-                }
-                $this->Carts->save($cart);
-                
-                $cartitem = $CartItems->newEmptyEntity();
-                $cartitem->cart_id = $cart->id;
-                $cartitem->item_id = !empty($product->item_id) ? $product->item_id : 1;
-                $cartitem->quantity = 1;
-                $cartitem->product_id = $product->id;
-                $cartitem->item_gross_amount = $product->offer_price;
-                //$cartitem->item_gross_amount=$cartitem->item_gross_amount*$quentity;
-                 $cartitem->vendor_id = $product->item->seller_id;
-                $cartitem->item_net_amount = $product->offer_price;
-            
-                $cartitem->delivery_charge =$delivery*$quentity;
-                
-                $CartItems->save($cartitem);
-                //echo "sdfsdfsfd";die;
-
-                /* send to leadsqured */
-               
-
-               // $this->Flash->success(__('The cart has been saved.'));
-               // return $this->redirect(['controller' => 'Carts', 'action' => 'index']);
-            } else {
-                //$this->Flash->error(__('Already in your cart'));
-              //  return $this->redirect(['controller' => 'Carts', 'action' => 'index']);
-            }
-        } 
-    }
-
-    
-
-	protected function setMeta($object,$type=TRUE)
-    {
-     
         $robot = 'index,follow';
-        
-       //print_r($object->name);
-        
-        if($type)
-        {
-          
-            $this->set('meta_title',$object->meta_title);
-            $this->set('meta_keywords',$object->meta_keywords);
-            $this->set('meta_desc',$object->meta_desc??$object->meta_description);
-            $this->set('canonical',$object->canonical);
-            
-            $this->set('title',$object->name);
-            $this->set('desc',$object->introduction);
-            $this->set('image',$object->photo);
-            $this->set('slug',$object->slug);
-            if(!empty($object->robots)){
-                $this->set('robot',$object->robots);
+        $this->_display_meta = TRUE;
+
+        // Try lookup in SeoPages first
+        $slugCandidates = [];
+        if (is_string($object)) {
+            $slugCandidates[] = $object;
+        } elseif (is_object($object)) {
+            if (!empty($object->slug)) {
+                $slugCandidates[] = $object->slug;
             }
-            else{
-                $this->set('robot',$robot);
+            if (!empty($object->page_name)) {
+                $slugCandidates[] = $object->page_name;
+            }
+            if (!empty($object->name)) {
+                $slugCandidates[] = $object->name;
             }
         }
-        else
-        {
-            $static_pages = \Cake\ORM\TableRegistry::getTableLocator()->get('StaticPages');
-            $data = $static_pages->findByPageName($object)->first();
-           
-            $this->set('meta_title',$data->meta_title);
-            $this->set('meta_keywords',$data->meta_keywords);
-            $this->set('meta_desc',$data->meta_desc??$data->meta_description);
-            $this->set('canonical',$data->canonical);
-            
-            if(!empty($data->robots)){
-                $this->set('robot',$data->robots);
+
+        $requestPath = trim($this->request->getPath(), '/');
+        if (!empty($requestPath)) {
+            $slugCandidates[] = $requestPath;
+        } else {
+            $slugCandidates[] = 'home';
+        }
+
+        $allSlugs = [];
+        foreach ($slugCandidates as $cand) {
+            $cand = trim((string)$cand);
+            if ($cand === '') continue;
+            $allSlugs[] = $cand;
+            $allSlugs[] = '/' . ltrim($cand, '/');
+            $allSlugs[] = ltrim($cand, '/');
+        }
+        $allSlugs = array_values(array_unique($allSlugs));
+
+        $seoPage = null;
+        if (!empty($allSlugs)) {
+            try {
+                $seoPagesTable = TableRegistry::getTableLocator()->get('SeoPages');
+                $seoPage = $seoPagesTable->find()->where(['slug IN' => $allSlugs])->first();
+            } catch (\Exception $e) {
+                // Table might not exist or error
             }
-            else{
-                $this->set('robot',$robot);
+        }
+
+        if ($seoPage) {
+            $this->set('meta_title', !empty($seoPage->meta_title) ? $seoPage->meta_title : ($seoPage->name ?? ''));
+            $this->set('meta_keywords', !empty($seoPage->meta_keywords) ? $seoPage->meta_keywords : '');
+            $this->set('meta_desc', !empty($seoPage->meta_desc) ? $seoPage->meta_desc : '');
+            $this->set('canonical', !empty($seoPage->canonical) ? $seoPage->canonical : '');
+            $this->set('title', !empty($seoPage->name) ? $seoPage->name : '');
+            $this->set('robot', !empty($seoPage->robots) ? $seoPage->robots : $robot);
+            return;
+        }
+
+        // Fallback to passed object if not found in SeoPages
+        if (is_object($object)) {
+            if ($type) {
+                $metaTitle = !empty($object->meta_title) ? $object->meta_title : 'Agshov Pharmaceuticals';
+                $metaKeywords = !empty($object->meta_keywords) ? $object->meta_keywords : 'Agshov Pharmaceuticals';
+
+                $this->set('meta_title', $metaTitle);
+                $this->set('meta_keywords', $metaKeywords);
+                $this->set('meta_desc', $object->meta_desc ?? $object->meta_description ?? '');
+                $this->set('canonical', $object->canonical ?? '');
+                $this->set('title', $object->name ?? '');
+                $this->set('desc', $object->introduction ?? '');
+                $this->set('image', $object->photo ?? '');
+                $this->set('slug', $object->slug ?? '');
+                if (!empty($object->robots)) {
+                    $this->set('robot', $object->robots);
+                } else {
+                    $this->set('robot', $robot);
+                }
+            } else {
+                $static_pages = TableRegistry::getTableLocator()->get('StaticPages');
+                $data = $static_pages->findByPageName($object)->first();
+                if ($data) {
+                    $metaTitle = !empty($data->meta_title) ? $data->meta_title : 'Agshov Pharmaceuticals';
+                    $metaKeywords = !empty($data->meta_keywords) ? $data->meta_keywords : 'Agshov Pharmaceuticals';
+
+                    $this->set('meta_title', $metaTitle);
+                    $this->set('meta_keywords', $metaKeywords);
+                    $this->set('meta_desc', $data->meta_desc ?? $data->meta_description ?? '');
+                    $this->set('canonical', $data->canonical ?? '');
+                    if (!empty($data->robots)) {
+                        $this->set('robot', $data->robots);
+                    } else {
+                        $this->set('robot', $robot);
+                    }
+                }
             }
         }
     }

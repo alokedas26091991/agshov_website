@@ -1,6 +1,6 @@
 <?php
 /**
- * Product Variants Listing - Dauji Admin Panel
+ * Product Variants Listing - Agshov Pharmaceuticals Admin Panel
  */
 ?>
 <?= $this->Html->css(['/admin_template/css/grab.css'], ['pathPrefix' => '']); ?>

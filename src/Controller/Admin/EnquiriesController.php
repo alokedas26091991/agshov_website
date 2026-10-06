@@ -18,14 +18,42 @@ class EnquiriesController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
-   public function index()
-{
-    $enquiries = $this->paginate($this->Enquiries->find('all', [
-        'order' => ['Enquiries.id' => 'DESC']
-    ]));
+    public function index()
+    {
+        $tab = $this->request->getQuery('tab', 'product');
 
-    $this->set(compact('enquiries'));
-}
+        $productCondition = [
+            'AND' => [
+                'OR' => [
+                    'Enquiries.type IS' => NULL,
+                    'Enquiries.type' => 'product'
+                ],
+                'Enquiries.productname NOT LIKE' => 'Career%'
+            ]
+        ];
+
+        $careerCondition = [
+            'OR' => [
+                'Enquiries.type' => 'career',
+                'Enquiries.productname LIKE' => 'Career%'
+            ]
+        ];
+
+        $query = $this->Enquiries->find('all');
+        if ($tab === 'career') {
+            $query->where($careerCondition);
+        } else {
+            $tab = 'product';
+            $query->where($productCondition);
+        }
+
+        $enquiries = $this->paginate($query->order(['Enquiries.id' => 'DESC']));
+
+        $productCount = $this->Enquiries->find()->where($productCondition)->count();
+        $careerCount = $this->Enquiries->find()->where($careerCondition)->count();
+
+        $this->set(compact('enquiries', 'tab', 'productCount', 'careerCount'));
+    }
 
 
     /**

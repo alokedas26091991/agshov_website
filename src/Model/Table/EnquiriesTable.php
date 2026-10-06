@@ -55,6 +55,11 @@ class EnquiriesTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
+            ->scalar('type')
+            ->maxLength('type', 50)
+            ->allowEmptyString('type');
+
+        $validator
             ->scalar('name')
             ->maxLength('name', 255)
             ->allowEmptyString('name');
@@ -77,7 +82,6 @@ class EnquiriesTable extends Table
             ->allowEmptyString('is_deleted');
 
         $validator
-            ->date('created_at')
             ->allowEmptyDate('created_at');
 
         return $validator;

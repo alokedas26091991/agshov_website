@@ -91,8 +91,10 @@
                         <h2 class="section-title">Apply For A Position</h2>
                         <p>Send us your details and resume, and our HR team will get back to you soon.</p>
                     </div>
+                    <div id="career-status-message" class="mb-3 d-none"></div>
                     <form action="/home/enquiry" method="post" enctype="multipart/form-data" class="career-form">
                         <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
+                        <input type="hidden" name="type" value="career">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <input type="text" name="name" class="form-control py-3" placeholder="Full Name" required>
@@ -126,3 +128,53 @@
     </div>
 </div>
 <!-- CAREER FORM AREA END -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const careerForm = document.querySelector('.career-form');
+    const statusMsg = document.getElementById('career-status-message');
+    if (careerForm) {
+        careerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitBtn = careerForm.querySelector('button[type="submit"]');
+            const origText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Submitting...';
+
+            const formData = new FormData(careerForm);
+            fetch('/home/enquiry', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = origText;
+                if (statusMsg) {
+                    statusMsg.classList.remove('d-none');
+                    if (data.success) {
+                        statusMsg.className = 'alert alert-success p-3 text-center mb-4';
+                        statusMsg.textContent = data.message || 'We have received your application. Our HR team will get back to you soon!';
+                        careerForm.reset();
+                    } else {
+                        statusMsg.className = 'alert alert-danger p-3 text-center mb-4';
+                        statusMsg.textContent = data.message || 'An error occurred. Please try again.';
+                    }
+                }
+            })
+            .catch(err => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = origText;
+                if (statusMsg) {
+                    statusMsg.classList.remove('d-none');
+                    statusMsg.className = 'alert alert-danger p-3 text-center mb-4';
+                    statusMsg.textContent = 'An error occurred while submitting your application. Please try again.';
+                }
+            });
+        });
+    }
+});
+</script>
