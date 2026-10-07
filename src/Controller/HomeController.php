@@ -373,7 +373,7 @@ class HomeController extends AppController
             $message = $this->request->getData('message');
             $product = $data['productname'];
             $variant = $this->request->getData('variant') ?? '';
-            $admin_email = 'alokedas51@gmail.com';
+            $admin_email = 'enquiry@agshovpharma.com';
 
             $this->loadComponent('SendMail');
 
@@ -610,7 +610,7 @@ class HomeController extends AppController
                 $email = $this->request->getData('email');
                 $mobile = $this->request->getData('mobile');
                 $message = $this->request->getData('message');
-                $admin_email = ['alokedas51@gmail.com', 'accenditoresoftware0005@gmail.com'];
+                $admin_email = ['enquiry@agshovpharma.com', 'accenditoresoftware0005@gmail.com'];
 
 
                 $this->loadComponent('SendMail');

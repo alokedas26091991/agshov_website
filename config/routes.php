@@ -58,6 +58,8 @@ return static function (RouteBuilder $routes) {
      $builder->connect('/about-us', ['controller' => 'StaticPages', 'action' => 'about-us', 'prefix' => FALSE]);
      $builder->connect('/career', ['controller' => 'StaticPages', 'action' => 'career', 'prefix' => FALSE]);
      $builder->connect('/our-products', ['controller' => 'Products', 'action' => 'index', 'prefix' => FALSE]);
+     $builder->connect('/products', ['controller' => 'Products', 'action' => 'index', 'prefix' => FALSE]);
+     $builder->connect('/products/index', ['controller' => 'Products', 'action' => 'index', 'prefix' => FALSE]);
 	 $builder->connect('/privacy-and-policy', ['controller' => 'Pages', 'action' => 'privacypolicy', 'prefix' => FALSE]);
 	 $builder->connect('/return-policy', ['controller' => 'Pages', 'action' => 'returnpolicy', 'prefix' => FALSE]);
 	 $builder->connect('/terms-and-conditions', ['controller' => 'Pages', 'action' => 'termsandconditions', 'prefix' => FALSE]);

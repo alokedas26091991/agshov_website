@@ -94,13 +94,23 @@
 
         <!-- Pagination -->
         <?php if ($this->Paginator->hasPage(2)): ?>
+            <?php
+            $this->Paginator->setTemplates([
+                'prevActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'prevDisabled' => '<li class="page-item disabled"><span class="page-link">{{text}}</span></li>',
+                'number' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'current' => '<li class="page-item active"><span class="page-link">{{text}}</span></li>',
+                'nextActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'nextDisabled' => '<li class="page-item disabled"><span class="page-link">{{text}}</span></li>',
+            ]);
+            ?>
             <div class="row mt-5">
                 <div class="col-12 d-flex justify-content-center">
                     <nav aria-label="Products pagination">
                         <ul class="pagination">
-                            <?= $this->Paginator->prev('« Previous', ['class' => 'page-item', 'linkClass' => 'page-link']) ?>
-                            <?= $this->Paginator->numbers(['class' => 'page-item', 'linkClass' => 'page-link']) ?>
-                            <?= $this->Paginator->next('Next »', ['class' => 'page-item', 'linkClass' => 'page-link']) ?>
+                            <?= $this->Paginator->prev('« Previous') ?>
+                            <?= $this->Paginator->numbers() ?>
+                            <?= $this->Paginator->next('Next »') ?>
                         </ul>
                     </nav>
                 </div>
