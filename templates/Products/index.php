@@ -30,13 +30,15 @@
         </div>
 
         <!-- Search Bar -->
-        <div class="row mb-4 justify-content-end">
-            <div class="col-lg-4 col-md-6">
-                <form action="/our-products" method="get" class="d-flex gap-2">
-                    <input type="text" name="search" class="form-control rounded-pill px-3" placeholder="Search products..." value="<?= h($search ?? '') ?>">
-                    <button type="submit" class="theme-btn-1 btn btn-effect-1 rounded-pill px-4">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+        <div class="row mb-4 justify-content-center justify-content-md-end">
+            <div class="col-lg-4 col-md-6 col-12">
+                <form action="/our-products" method="get" class="product-search-form">
+                    <div class="input-group search-pill-group">
+                        <input type="text" name="search" class="form-control search-input" placeholder="Search products..." value="<?= h($search ?? '') ?>">
+                        <button type="submit" class="btn search-btn" aria-label="Search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

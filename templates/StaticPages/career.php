@@ -106,7 +106,7 @@
                                 <input type="text" name="phone" class="form-control py-3" placeholder="Phone Number" required>
                             </div>
                             <div class="col-md-6">
-                                <select name="subject" class="form-select py-3">
+                                <select name="subject" class="nice-select wide" required>
                                     <option value="">Select Position</option>
                                     <option value="Career: Sales & Marketing">Sales & Marketing</option>
                                     <option value="Career: Administration">Administration</option>

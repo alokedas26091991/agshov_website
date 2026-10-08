@@ -224,7 +224,7 @@
             <div class="col-lg-9">
                 <div class="row g-4">
                     <?php if (!empty($dbProducts)): ?>
-                        <?php foreach (array_slice($dbProducts, 0, 8) as $product): ?>
+                        <?php foreach (array_slice($dbProducts, 0, 6) as $product): ?>
                             <?php
                             $imgUrl = '/img/products/AGCET M TAB.png';
                             if (!empty($product->photo)) {
@@ -268,39 +268,191 @@
 </div>
 <!-- PRODUCT AREA END -->
 
-<!-- PHARMA HIGHLIGHTS STRIP START -->
-<div class="pharma-highlights-strip section-bg-1 pt-5 pb-5">
+<!-- COUNTER UP AREA START -->
+<div class="ltn__counterup-area premium-counter-area pt-80 pb-50">
+    <div class="premium-counter-pattern"></div>
+    <div class="container position-relative z-index-2">
+        <div class="row align-items-center justify-content-center">
+            <!-- Field 1 -->
+            <div class="col-md-4 col-sm-12 lg-counter-col">
+                <div class="premium-counter-item">
+                    <div class="premium-counter-icon">
+                        <i class="fa-solid fa-flask-vial"></i>
+                    </div>
+                    <div class="premium-counter-info">
+                        <h1><span class="counter">2,800</span></h1>
+                        <h6>Formulations</h6>
+                    </div>
+                </div>
+            </div>
+            <!-- Field 2 -->
+            <div class="col-md-4 col-sm-12 lg-counter-col premium-counter-border">
+                <div class="premium-counter-item">
+                    <div class="premium-counter-icon">
+                        <i class="fa-solid fa-prescription-bottle-medical"></i>
+                    </div>
+                    <div class="premium-counter-info">
+                        <h1>Over <span class="counter">2</span>M+</h1>
+                        <h6>Prescriptions Already Served</h6>
+                    </div>
+                </div>
+            </div>
+            <!-- Field 3 -->
+            <div class="col-md-4 col-sm-12 lg-counter-col premium-counter-border">
+                <div class="premium-counter-item">
+                    <div class="premium-counter-icon">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <div class="premium-counter-info">
+                        <h1><span class="counter">65</span></h1>
+                        <h6>Doctors & Specialists</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- COUNTER UP AREA END -->
+
+<!-- FEATURE AREA START -->
+<div class="ltn__feature-area section-bg-1 pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div id="pharmaHighlightCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="pharma-highlight-card text-center">
-                                <div class="pharma-highlight-icon mb-2">
-                                    <i class="fa-solid fa-industry fs-2 text-danger"></i>
-                                </div>
-                                <h4>GMP Certified</h4>
-                                <p>All products manufactured under strict WHO-GMP guidelines</p>
-                            </div>
+                <div class="section-title-area ltn__section-title-2 text-center">
+                    <h6 class="section-subtitle ltn__secondary-color">Features</h6>
+                    <h1 class="section-title">Why Choose Agshov</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Premium Feature 1 -->
+            <div class="col-lg-4 col-sm-6 col-12 d-flex align-items-stretch">
+                <div class="ltn__feature-item ltn__feature-item-7 premium-feature-card w-100">
+                    <div class="ltn__feature-icon-title">
+                        <div class="ltn__feature-icon">
+                            <span><i class="fas fa-microscope text-primary-icon"></i> </span>
                         </div>
-                        <div class="carousel-item">
-                            <div class="pharma-highlight-card text-center">
-                                <div class="pharma-highlight-icon mb-2">
-                                    <i class="fa-solid fa-flask fs-2 text-danger"></i>
-                                </div>
-                                <h4>Advanced R&amp;D</h4>
-                                <p>Continuously investing in next-gen pharmaceutical formulations</p>
-                            </div>
+                        <h3><a href="#">World-Class Quality</a></h3>
+                    </div>
+                    <div class="ltn__feature-info">
+                        <p>Every product is synthesized and manufactured under stringent global standards, ensuring utmost safety and clinical efficacy for our patients.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Premium Feature 2 -->
+            <div class="col-lg-4 col-sm-6 col-12 d-flex align-items-stretch">
+                <div class="ltn__feature-item ltn__feature-item-7 premium-feature-card w-100">
+                    <div class="ltn__feature-icon-title">
+                        <div class="ltn__feature-icon">
+                            <span><i class="fas fa-flask text-primary-icon"></i> </span>
                         </div>
-                        <div class="carousel-item">
-                            <div class="pharma-highlight-card text-center">
-                                <div class="pharma-highlight-icon mb-2">
-                                    <i class="fa-solid fa-file-medical fs-2 text-danger"></i>
-                                </div>
-                                <h4>Regulatory Compliant</h4>
-                                <p>Fully DCGI &amp; FDA approved formulations and processes</p>
+                        <h3><a href="#">Innovative Formulations</a></h3>
+                    </div>
+                    <div class="ltn__feature-info">
+                        <p>We invest significantly in research and development to bring cutting-edge, specialized medical solutions for Oncology, Ophthalmology, and more.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Premium Feature 3 -->
+            <div class="col-lg-4 col-sm-6 col-12 d-flex align-items-stretch">
+                <div class="ltn__feature-item ltn__feature-item-7 premium-feature-card w-100">
+                    <div class="ltn__feature-icon-title">
+                        <div class="ltn__feature-icon">
+                            <span><i class="fas fa-heart-pulse text-primary-icon"></i> </span>
+                        </div>
+                        <h3><a href="#">Patient-First Approach</a></h3>
+                    </div>
+                    <div class="ltn__feature-info">
+                        <p>Our overarching mission centers on enhancing the lives of patients. We ensure our critical healthcare products remain accessible and affordable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FEATURE AREA END -->
+
+<!-- PHARMA HIGHLIGHTS STRIP START -->
+<div class="pharma-highlights-area py-5">
+    <div class="container">
+        <!-- Desktop Grid (hidden on mobile) -->
+        <div class="row g-4 d-none d-md-flex">
+            <div class="col-md-3">
+                <div class="pharma-highlight-card">
+                    <div class="pharma-highlight-icon">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h4>GMP Certified</h4>
+                    <p>All products manufactured under strict WHO-GMP guidelines</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pharma-highlight-card">
+                    <div class="pharma-highlight-icon">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <h4>Advanced R&amp;D</h4>
+                    <p>Continuously investing in next-gen pharmaceutical formulations</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pharma-highlight-card">
+                    <div class="pharma-highlight-icon">
+                        <i class="fa-solid fa-file-medical"></i>
+                    </div>
+                    <h4>Regulatory Compliant</h4>
+                    <p>Fully DCGI &amp; FDA approved formulations and processes</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pharma-highlight-card">
+                    <div class="pharma-highlight-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h4>Pan-India Network</h4>
+                    <p>500+ distribution points across all major states of India</p>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Carousel (hidden on desktop) -->
+        <div class="d-md-none">
+            <div id="pharmaHighlightCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="pharma-highlight-card">
+                            <div class="pharma-highlight-icon">
+                                <i class="fa-solid fa-industry"></i>
                             </div>
+                            <h4>GMP Certified</h4>
+                            <p>All products manufactured under strict WHO-GMP guidelines</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="pharma-highlight-card">
+                            <div class="pharma-highlight-icon">
+                                <i class="fa-solid fa-flask"></i>
+                            </div>
+                            <h4>Advanced R&amp;D</h4>
+                            <p>Continuously investing in next-gen pharmaceutical formulations</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="pharma-highlight-card">
+                            <div class="pharma-highlight-icon">
+                                <i class="fa-solid fa-file-medical"></i>
+                            </div>
+                            <h4>Regulatory Compliant</h4>
+                            <p>Fully DCGI &amp; FDA approved formulations and processes</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="pharma-highlight-card">
+                            <div class="pharma-highlight-icon">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <h4>Pan-India Network</h4>
+                            <p>500+ distribution points across all major states of India</p>
                         </div>
                     </div>
                 </div>
